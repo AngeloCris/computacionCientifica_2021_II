@@ -1,5 +1,22 @@
 ---
-title: "Bienvenidos"
+title: "BIENVENIDOS"
 
 ---
+
+# Visión general
+
+Este sitio web es el punto de partida para una secuencia de clases de reforzamiento del curso **"Computación y programación Básica - 2do Semestre 2021"** realizado por la Universidad de Concepción.
+
+# Clases Online
+
+Favor de unirse a Microsoft Teams todos los lunes de 15:15 a 17:00.
+
+La primera media hora se procederá a realizar consultas/repaso del material previamente asignado en clases por los profesores principales del curso: Dr. Billy Ernst y el Dr. Diego Narváez. Posteriormente se le asignará un test de 30 minutos de duración el cual deberá ser resuelto en canvas. El solucionario del test y/o consultas, comentarios del mismo se realizará en la última media hora.
+
+# Horario
+
+1. Septiembre 6: **R-project**\
+Familiarizarse con los conceptos generales del software R-project y el entorno de desarrollo R-Studio.
+
+
 
