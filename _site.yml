@@ -1,0 +1,9 @@
+name: "R-epaso"
+navbar:
+  title: "R-epaso"
+  left:
+    - text: "Contenido"
+      href: index.html
+    - text: "Rstudio"
+      href: rstudio.html
+output_dir: "."
