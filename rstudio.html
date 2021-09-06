@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Angelo AC" />
 
 
-<title>Rstudio</title>
+<title>R-studio</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -30,7 +29,11 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -216,7 +219,73 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
 
 
 
@@ -226,6 +295,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -258,19 +337,69 @@ $(document).ready(function () {
 
 <div id="header">
 
-
-
-<h1 class="title toc-ignore">Rstudio</h1>
-<h4 class="author">Angelo AC</h4>
-<h4 class="date">06-09-2021</h4>
-
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
 </div>
 
 
 
 
+</div>
 
 
+<div id="objetivo" class="section level2">
+<h2>Objetivo</h2>
+<ul>
+<li>Instalación de R-studio</li>
+</ul>
+</div>
+<div id="conceptos-generales-software" class="section level2">
+<h2>Conceptos generales: Software</h2>
+<div id="qué-es-r-y-rstudio" class="section level3">
+<h3>¿Qué es R y Rstudio?</h3>
+<ol style="list-style-type: decimal">
+<li><p>R es un lenguaje de programación científica.</p></li>
+<li><p>R-studio es un entorno de desarrollo integrado (IDE) que proporciona un entorno de codificación robusto para escribir y ejecutar código R. Se recomienda revisar el Cheat Sheets de Rstudio a través del menú <strong>Help -&gt; Cheat Sheets -&gt; Rstudio IDE Cheat Sheet</strong> para comprender rápidamente los paneles y atajos de los comandos.</p></li>
+</ol>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/cheatSheet.PNG&quot;)</code></pre>
+<p><img src="figures/cheatSheet.PNG" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="porqué-usar-r" class="section level3">
+<h3>¿Porqué usar R?</h3>
+<ol style="list-style-type: decimal">
+<li>¡Es gratis y trabaja en multiples plataformas!</li>
+</ol>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/Rmultiplataforma.png&quot;)</code></pre>
+<p><img src="figures/Rmultiplataforma.png" width="80%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Es un comando de programación.</p></li>
+<li><p>Gráficos y Visualización.</p></li>
+</ol>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/Rgraficos.png&quot;)</code></pre>
+<p><img src="figures/Rgraficos.png" width="80%" style="display: block; margin: auto;" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Un solo software para diferentes tipos de análisis. Miles de análisis estadísticos clásicos y modernos estan disponibles en R o en paquetes para R.</p></li>
+<li><p>Automatización de metodologías. Con R, la realización de un procedimiento y/o ordenamiento de la data mediante un script no necesita crearse cada vez que se inicia el programa. <strong>¡Es automático!</strong></p></li>
+<li><p>Acceso a técnicas recientemente desarrolladas o en desarrollo permamente por la comunidad científica mundial.</p></li>
+<li><p>No hay límites. Si no se encuentra lo que se busca, uno mismo puede construirlo.</p></li>
+</ol>
+</div>
+</div>
+<div id="instalación-de-r-studio" class="section level2">
+<h2>Instalación de R-studio</h2>
+<p>Para el desarrollo del presente curso se necesitará instalar el software estadístico <a href="https://cran.r-project.org/bin/windows/base/">R-project</a>. También, es recomendable instalar un editor de texto. Por simplicidad, se recomienda utilizar <a href="https://www.rstudio.com/products/rstudio/download/%5D">R-studio</a>.</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/ventanasRstudio.png&quot;)</code></pre>
+<p><img src="figures/ventanasRstudio.png" width="1682" /></p>
+</div>
+
+
+
+</div>
+</div>
 
 </div>
 
@@ -302,7 +431,41 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
