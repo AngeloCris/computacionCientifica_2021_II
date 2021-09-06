@@ -1,11 +1,62 @@
 ---
-title: "Rstudio"
-author: "Angelo AC"
-date: "06-09-2021"
-output: html_document
+pagetitle: "R-studio"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: "show"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Objetivo
+
+- Instalación de R-studio
+
+## Conceptos generales: Software
+
+### ¿Qué es R y Rstudio?
+
+1. R es un lenguaje de programación científica.
+
+2. R-studio es un entorno de desarrollo integrado (IDE) que proporciona un entorno de codificación robusto para escribir y ejecutar código R. Se recomienda revisar el Cheat Sheets de Rstudio a través del menú **Help -> Cheat Sheets -> Rstudio IDE Cheat Sheet** para comprender rápidamente los paneles y atajos de los comandos.
+
+
+```{r out.width="80%", fig.align='center'}
+knitr::include_graphics("figures/cheatSheet.PNG")
+```
+
+### ¿Porqué usar R?
+
+1. ¡Es gratis y trabaja en multiples plataformas!
+
+```{r out.width="80%", fig.align= 'center'}
+knitr::include_graphics("figures/Rmultiplataforma.png")
+```
+
+2. Es un comando de programación.
+
+3. Gráficos y Visualización.
+
+```{r out.width="80%", fig.align="center"}
+knitr::include_graphics("figures/Rgraficos.png")
+```
+
+4. Un solo software para diferentes tipos de análisis. Miles de análisis estadísticos clásicos y modernos estan disponibles en R o en paquetes para R.
+
+5. Automatización de metodologías. Con R, la realización de un procedimiento y/o ordenamiento de la data mediante un script no necesita crearse cada vez que se inicia el programa. **¡Es automático!**
+
+6. Acceso a técnicas recientemente desarrolladas o en desarrollo permamente por la comunidad científica mundial. 
+
+7. No hay límites. Si no se encuentra lo que se busca, uno mismo puede construirlo.
+
+## Instalación de R-studio
+
+Para el desarrollo del presente curso se necesitará instalar el software estadístico [R-project](https://cran.r-project.org/bin/windows/base/). También, es recomendable instalar un editor de texto. Por simplicidad, se recomienda utilizar [R-studio]( https://www.rstudio.com/products/rstudio/download/]).
+
+```{r}
+knitr::include_graphics("figures/ventanasRstudio.png")
+```
