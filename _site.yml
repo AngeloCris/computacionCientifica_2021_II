@@ -5,5 +5,13 @@ navbar:
     - text: "Contenido"
       href: index.html
     - text: "Rstudio"
+      icon: "fab fa-r-project"
       href: rstudio.html
+  right:
+    - text: "Repo"
+      icon: "fab fa-github"
+      href: https://github.com/AngeloCris/computacionCientifica_s2
+    - text: "Bibliografía"
+      icon: "fas fa-search"
+      href: bibliografía.html
 output_dir: "."
