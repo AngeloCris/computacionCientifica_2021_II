@@ -11,9 +11,9 @@ navbar:
     - text: "Repo"
       icon: "fab fa-github"
       href: https://github.com/AngeloCris/computacionCientifica_s2
-    - text: "Bibliografía"
+    - text: "Bibliografia"
       icon: "fas fa-search"
-      href: bibliografía.html
+      href: bibliografia.html
 output_dir: "."
 output:
   html_document:
