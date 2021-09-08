@@ -1,0 +1,22 @@
+---
+title: "Bibliografia"
+output:
+  html_document:
+    code_folding: null
+    number_sections: false
+    pandoc_args: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* [Crawley, M. J. (2012). The R book. John Wiley & Sons.](https://udec.instructure.com/courses/23758/files/1571106/download?wrap=1)
+
+* [Santana Sepúlveda, S., & Mateos Farfán, E. (2014). El arte de programar en R: un lenguaje para la estadística.](https://cran.r-project.org/doc/contrib/Santana_El_arte_de_programar_en_R.pdf)
+
+* [Zuur, A., Ieno, E. N., & Meesters, E. (2009). A Beginner's Guide to R. Springer Science & Business Media.](https://udec.instructure.com/courses/23758/files/1571136/download?wrap=1)
+
+* [Insights from data with R: An Introduction for the Life and Environmental Sciences.Owen L. Petchey, Andrew P. Beckerman, Natalie Cooper and Dylan Z. Childs, Oxford UniversityPress (2021). © Owen L. Petchey, Andrew P. Beckerman, Natalie Cooper and Dylan Z. Childs.DOI: 10.1093/oso/9780198849810.001.0001](https://udec.instructure.com/courses/23758/files/1571075/download?download_frd=1)
+
+* [Paleta de colores](https://udec.instructure.com/courses/23758/files/1571132/download?wrap=1)
