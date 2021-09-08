@@ -4,7 +4,7 @@ navbar:
   left:
     - text: "Contenido"
       href: index.html
-    - text: "Rstudio"
+    - text: "studio"
       icon: "fab fa-r-project"
       href: rstudio.html
   right:
