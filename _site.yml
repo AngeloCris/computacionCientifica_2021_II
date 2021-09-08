@@ -15,3 +15,8 @@ navbar:
       icon: "fas fa-search"
       href: bibliografía.html
 output_dir: "."
+output:
+  html_document:
+    toc_depth: 4
+    toc_float: true
+    css: libs/swcarpentry-lesson.css
