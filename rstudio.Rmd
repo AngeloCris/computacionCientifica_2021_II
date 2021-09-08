@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Instalación de R-studio
 
+- Conceptos básicos de R-studio
+
 ## Conceptos generales: Software
 
 ### ¿Qué es R y Rstudio?

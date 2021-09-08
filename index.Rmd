@@ -13,10 +13,37 @@ Favor de unirse a Microsoft Teams todos los lunes de 15:15 a 17:00.
 
 La primera media hora se procederá a realizar consultas/repaso del material previamente asignado en clases por los profesores principales del curso: Dr. Billy Ernst y el Dr. Diego Narváez. Posteriormente se le asignará un test de 30 minutos de duración el cual deberá ser resuelto en canvas. El solucionario del test y/o consultas, comentarios del mismo se realizará en la última media hora.
 
-# Horario
+# Temario
 
 1. Septiembre 6: **R-project**\
 Familiarizarse con los conceptos generales del software R-project y el entorno de desarrollo R-Studio.
+
+2. Septiembre 13: **Datos**\
+Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, importación de archivos. Operaciones matriciales y por elementos. Uso y operaciones con dataframes. La temática del tópico **Datos** se dividirá en tres semanas, en las cuales se abordarán los siguientes puntos:
+
+    - Variables en R, input/output
+    
+    - Operaciones matriciales y por elemento
+    
+    - Uso y operaciones con dataframe
+
+3. Septiembre 20: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
+
+    - Operadores aritméticos y lógicos. Diagramas de flujo
+    
+    - Condicionales
+    
+    - Ciclos o bucles
+    
+4. Septiembre 27: **Funciones**. Implementar funciones personalizadas para desarrollar tareas específicas. Emplear funciones gráficas para la visualización de datos. Este tópico se sub-dividirá en 3 semanas donde se abordarán los siguientes puntos:
+
+    - Funciones en R. 
+    
+    - Funciones gráficas I y II
+
+5. Octubre 4: **Aplicaciones**. Desarrollar una función con aplicación biológicas. Trabajo final.
+
+
 
 
 
