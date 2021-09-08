@@ -10,7 +10,7 @@ navbar:
   right:
     - text: "Repo"
       icon: "fab fa-github"
-      href: https://github.com/AngeloCris/computacionCientifica_s2
+      href: https://github.com/AngeloCris/computacionCientifica_2021_II
     - text: "Bibliografia"
       icon: "fas fa-search"
       href: bibliografia.html
