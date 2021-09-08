@@ -16,7 +16,8 @@ La primera media hora se procederá a realizar consultas/repaso del material pre
 # Temario
 
 1. Septiembre 6: **R-project**\
-Familiarizarse con los conceptos generales del software R-project y el entorno de desarrollo R-Studio.
+Familiarizarse con los conceptos generales del software R-project y el entorno de desarrollo R-Studio.\
+[Semana 1 y 2](./rstudio.html)
 
 2. Septiembre 13: **Datos**\
 Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, importación de archivos. Operaciones matriciales y por elementos. Uso y operaciones con dataframes. La temática del tópico **Datos** se dividirá en tres semanas, en las cuales se abordarán los siguientes puntos:
@@ -25,7 +26,7 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     
     - Operaciones matriciales y por elemento
     
-    - Uso y operaciones con dataframe
+    - Uso y operaciones con dataframe\
 
 3. Septiembre 20: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
 
