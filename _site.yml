@@ -7,6 +7,9 @@ navbar:
     - text: "studio"
       icon: "fab fa-r-project"
       href: rstudio.html
+    - text: "Datos"
+      href: datos.html
+      icon: "fas fa-database"
   right:
     - text: "Repo"
       icon: "fab fa-github"
