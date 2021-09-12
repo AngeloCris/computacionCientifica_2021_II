@@ -11,7 +11,7 @@
 
 
 
-<title>R-studio</title>
+<title>Datos</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -381,47 +381,77 @@ div.tocify {
 <div id="objetivo" class="section level2 unnumbered objectives">
 <h2 class="unnumbered objectives">Objetivo</h2>
 <ul>
-<li><p>Instalación de R-studio</p></li>
-<li><p>Conceptos básicos de R-studio</p></li>
+<li><p>Reconocer los tipos de variables disponibles en R</p></li>
+<li><p>Construir series de datos con distintos procedimientos</p></li>
+<li><p>Realizar operaciones básicas en R</p></li>
 </ul>
 </div>
-<div id="conceptos-generales-software" class="section level2">
-<h2>Conceptos generales: Software</h2>
-<div id="qué-es-r-y-rstudio" class="section level3">
-<h3>¿Qué es R y Rstudio?</h3>
-<ol style="list-style-type: decimal">
-<li><p>R es un lenguaje de programación científica.</p></li>
-<li><p>R-studio es un entorno de desarrollo integrado (IDE) que proporciona un entorno de codificación robusto para escribir y ejecutar código R. Se recomienda revisar el Cheat Sheets de Rstudio a través del menú <strong>Help -&gt; Cheat Sheets -&gt; Rstudio IDE Cheat Sheet</strong> para comprender rápidamente los paneles y atajos de los comandos.</p></li>
-</ol>
-<pre class="r"><code>knitr::include_graphics(&quot;figures/cheatSheet.PNG&quot;)</code></pre>
-<p><img src="figures/cheatSheet.PNG" width="80%" style="display: block; margin: auto;" /></p>
+<div id="tipos-de-datos" class="section level2">
+<h2>Tipos de datos</h2>
+<p>En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.</p>
+<p>R tiene cinco clases básicas de variables:</p>
+<ul>
+<li><p>Entero, representan números enteros. Pueden ser usados en operaciones matemáticas.</p></li>
+<li><p>Numérico, son datos numéricos, es decir, pueden representar valores enteros o fracción. Son también llamados <code>double</code> o <code>float</code>.</p></li>
+<li><p>Cadena de texto, es un tipo de dato representado como texto, es decir, secuencias de caracteres. Se reconoce fácilmente debido a que se encuentran entre comillas <code>" "</code></p></li>
+<li><p>Factor, es un dato al que se le asigna una etiqueta (presenta niveles. Por ejemplo: los números 1 y 2 pueden representar a etiquetas <strong>femenino</strong> y <strong>masculino</strong> respectivamente.</p></li>
+<li><p>Lógico, son datos que contienen unicamente dos valores posibles: verdadero(<code>TRUE</code>) o falso (<code>FALSE</code>). Representan una condición.</p></li>
+<li><p>Valores perdidos y vacíos, representa la ausencia de datos.</p></li>
+</ul>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/tipoDatoR.PNG&quot;)</code></pre>
+<p><img src="figures/tipoDatoR.PNG" width="80%" style="display: block; margin: auto;" /></p>
+<p>Se puede verificar el tipo de un dato con la función <code>class()</code>. Esto es de utilidad para asegurar las operaciones que deseamos realizar se puedan llevar a cabo con éxito. La función <code>class()</code> recibe como argumento un dato o vector y devuelve el nombre del tipo al que pertenece.</p>
+<pre class="r"><code>class(&quot;A&quot;)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>El objeto básico de R es el vector:</p>
+<ul>
+<li>Un vector es un “contenedor” que puede almacenar 1 o más datos, pero de una misma clase.</li>
+</ul>
+<pre class="r"><code>vector(mode = &quot;character&quot;, length = 9)</code></pre>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="r"><code>vector(mode = &quot;numeric&quot;, length = 9)</code></pre>
+<pre><code>## [1] 0 0 0 0 0 0 0 0 0</code></pre>
+<p>Ejemplos:</p>
+<pre class="r"><code># Usando función seq  (vector del tipo numérico)
+miVector_1 &lt;- seq(from = 1, to = 10, by = 1)
+
+# Usando la función c() concatenar (vector del tipo numérico)
+miVector_2 &lt;- c(1, 2, 3, 4, 5)
+
+# Usando el objeto letter (vector del tipo caracter)
+miVector_3 &lt;- c(letters)
+
+# Usando la función rep
+miVector_4 &lt;- rep(x = 13, times = 4)</code></pre>
+<p>En R existen diferentes funciones. Éstas han sido diseñadas para realizar una labor específica Se identifican por tener un nombre particular seguido por unos paréntesis <code>()</code>. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:</p>
+<pre class="r"><code># Crear una secuencia numérica del 1 al 10 cada 2 unidades
+seq(from = 1, to = 10, by = 2)</code></pre>
+<pre><code>## [1] 1 3 5 7 9</code></pre>
+<pre class="r"><code># Sumar los primeros 5 números
+sum(c(1:5))</code></pre>
+<pre><code>## [1] 15</code></pre>
+<pre class="r"><code># Obtener la raíz cuadrada 
+sqrt(16)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code># Obtener asistencia o ayuda
+# help(sum)</code></pre>
+<p>Por otro lado, con frecuencia, se deseará seleccionar algunos elementos de un vector. Este proceso se denominará indexación, para tal fin se debe emplear los corchetes (<code>[]</code>)</p>
+<pre class="r"><code># Seleccionar el 5to elemento del vector &quot;miVector_1&quot;
+miVector_1[5]</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code># Seleccionar el 3er elemento del vector &quot;miVector_3&quot;
+miVector_3[3]</code></pre>
+<pre><code>## [1] &quot;c&quot;</code></pre>
+<pre class="r"><code># Seleccionar el 2do y 5to elemento del vector &quot;miVector_3&quot;
+miVector_3[c(2,5)]</code></pre>
+<pre><code>## [1] &quot;b&quot; &quot;e&quot;</code></pre>
 </div>
-<div id="porqué-usar-r" class="section level3">
-<h3>¿Porqué usar R?</h3>
-<ol style="list-style-type: decimal">
-<li>¡Es gratis y trabaja en multiples plataformas!</li>
-</ol>
-<pre class="r"><code>knitr::include_graphics(&quot;figures/Rmultiplataforma.png&quot;)</code></pre>
-<p><img src="figures/Rmultiplataforma.png" width="80%" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Es un comando de programación.</p></li>
-<li><p>Gráficos y Visualización.</p></li>
-</ol>
-<pre class="r"><code>knitr::include_graphics(&quot;figures/Rgraficos.png&quot;)</code></pre>
-<p><img src="figures/Rgraficos.png" width="80%" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li><p>Un solo software para diferentes tipos de análisis. Miles de análisis estadísticos clásicos y modernos estan disponibles en R o en paquetes para R.</p></li>
-<li><p>Automatización de metodologías. Con R, la realización de un procedimiento y/o ordenamiento de la data mediante un script no necesita crearse cada vez que se inicia el programa. <strong>¡Es automático!</strong></p></li>
-<li><p>Acceso a técnicas recientemente desarrolladas o en desarrollo permamente por la comunidad científica mundial.</p></li>
-<li><p>No hay límites. Si no se encuentra lo que se busca, uno mismo puede construirlo.</p></li>
-</ol>
-</div>
-</div>
-<div id="instalación-de-r-studio" class="section level2">
-<h2>Instalación de R-studio</h2>
-<p>Para el desarrollo del presente curso se necesitará instalar el software estadístico <a href="https://cran.r-project.org/bin/windows/base/">R-project</a>. También, es recomendable instalar un editor de texto. Por simplicidad, se recomienda utilizar <a href="https://www.rstudio.com/products/rstudio/download/%5D">R-studio</a>.</p>
-<pre class="r"><code>knitr::include_graphics(&quot;figures/ventanasRstudio.png&quot;)</code></pre>
-<p><img src="figures/ventanasRstudio.png" width="1682" /></p>
+<div id="operadores-de-asignación" class="section level2">
+<h2>Operadores de asignación</h2>
+<p>Permite asignar datos a variables:</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/operadorAsignacion.PNG&quot;)</code></pre>
+<p><img src="figures/operadorAsignacion.PNG" width="80%" style="display: block; margin: auto;" /></p>
+<p>Aunque se puede usar el símbolo <code>&lt;-</code> o <code>=</code> se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.</p>
 </div>
 
 
