@@ -34,9 +34,30 @@ R tiene cinco clases básicas de variables:
 
 - Valores perdidos y vacíos, representa la ausencia de datos.
 
-```{r out.width="80%", fig.align='center'}
-knitr::include_graphics("figures/tipoDatoR.PNG")
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# librerias
+library(tidyverse)
+library(kableExtra)
 ```
+
+```{r}
+tibble::tibble(
+  Tipo = c("Entero",
+           "Numérico",
+           "Cadena de texto", 
+           "Factor",
+           "Lógico",
+           "Persido", 
+           "Vacío"),
+  Ejemplo = c("1", "2.4", "\"a\"", "2", "TRUE", "NA", "NULL"),
+  `Nombre en inglés` = c("integer", "numeric","character",
+                         "factor", "logical", "NA", "null")) %>% 
+  kbl(booktabs = T) %>% 
+  kable_styling(bootstrap_options = "striped",
+                full_width = F,
+                position = "center")
+```
+
 
 Se puede verificar el tipo de un dato con la función `class()`. Esto es de utilidad para asegurar las operaciones que deseamos realizar se puedan llevar a cabo con éxito. La función `class()` recibe como argumento un dato o vector y devuelve el nombre del tipo al que pertenece.
 
@@ -103,9 +124,22 @@ miVector_3[c(2,5)]
 
 Permite asignar datos a variables:
 
-```{r out.width="80%", fig.align='center'}
-knitr::include_graphics("figures/operadorAsignacion.PNG")
+```{r}
+
+library(kableExtra)
+tibble::tibble(
+  operador = c("<-", "="),
+  `Operación` = c("Asigna un valor a una variable",
+                "Asigna un valor a una variable")
+) %>% 
+  kbl(booktabs = T) %>% 
+  kable_styling(bootstrap_options = "striped",
+                full_width = F,
+                position = "center")
 ```
 
 Aunque se puede usar el símbolo `<-` o `=` se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.
+
+
+
 
