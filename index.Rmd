@@ -22,7 +22,8 @@ Familiarizarse con los conceptos generales del software R-project y el entorno d
 2. Septiembre 13: **Datos**\
 Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, importación de archivos. Operaciones matriciales y por elementos. Uso y operaciones con dataframes. La temática del tópico **Datos** se dividirá en tres semanas, en las cuales se abordarán los siguientes puntos:
 
-    - Variables en R, input/output
+    - Variables en R, input/output \
+    [Semana 3](./datos.html)
     
     - Operaciones matriciales y por elemento
     

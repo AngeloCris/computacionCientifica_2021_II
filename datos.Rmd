@@ -1,0 +1,111 @@
+---
+pagetitle: "Datos"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: "show"
+---
+
+## Objetivo {.unnumbered .objectives}
+
+- Reconocer los tipos de variables disponibles en R
+
+- Construir series de datos con distintos procedimientos
+
+- Realizar operaciones básicas en R
+
+## Tipos de datos
+
+En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.
+
+R tiene cinco clases básicas de variables:
+
+- Entero, representan números enteros. Pueden ser usados en operaciones matemáticas.
+
+- Numérico, son datos numéricos, es decir, pueden representar valores enteros o fracción. Son también llamados `double` o `float`.
+
+- Cadena de texto, es un tipo de dato representado como texto, es decir, secuencias de caracteres. Se reconoce fácilmente debido a que se encuentran entre comillas `" "`
+
+- Factor, es un dato al que se le asigna una etiqueta (presenta niveles. Por ejemplo: los números 1 y 2 pueden representar a etiquetas **femenino** y **masculino** respectivamente.
+
+- Lógico, son datos que contienen unicamente dos valores posibles: verdadero(`TRUE`) o falso (`FALSE`). Representan una condición.
+
+- Valores perdidos y vacíos, representa la ausencia de datos.
+
+```{r out.width="80%", fig.align='center'}
+knitr::include_graphics("figures/tipoDatoR.PNG")
+```
+
+Se puede verificar el tipo de un dato con la función `class()`. Esto es de utilidad para asegurar las operaciones que deseamos realizar se puedan llevar a cabo con éxito. La función `class()` recibe como argumento un dato o vector y devuelve el nombre del tipo al que pertenece.
+
+```{r}
+class("A")
+```
+
+El objeto básico de R es el vector:
+
+* Un vector es un "contenedor" que puede almacenar 1 o más datos, pero de una misma clase.
+
+```{r}
+vector(mode = "character", length = 9)
+vector(mode = "numeric", length = 9)
+```
+
+Ejemplos:
+
+```{r}
+# Usando función seq  (vector del tipo numérico)
+miVector_1 <- seq(from = 1, to = 10, by = 1)
+
+# Usando la función c() concatenar (vector del tipo numérico)
+miVector_2 <- c(1, 2, 3, 4, 5)
+
+# Usando el objeto letter (vector del tipo caracter)
+miVector_3 <- c(letters)
+
+# Usando la función rep
+miVector_4 <- rep(x = 13, times = 4)
+```
+
+En R existen diferentes funciones. Éstas han sido diseñadas para realizar una labor específica Se identifican por tener un nombre particular seguido por unos paréntesis `()`. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:
+
+```{r}
+# Crear una secuencia numérica del 1 al 10 cada 2 unidades
+seq(from = 1, to = 10, by = 2)
+
+# Sumar los primeros 5 números
+sum(c(1:5))
+
+# Obtener la raíz cuadrada 
+sqrt(16)
+
+# Obtener asistencia o ayuda
+# help(sum)
+```
+
+Por otro lado, con frecuencia, se deseará seleccionar algunos elementos de un vector. Este proceso se denominará indexación, para tal fin se debe emplear los corchetes (`[]`)
+
+```{r}
+# Seleccionar el 5to elemento del vector "miVector_1"
+miVector_1[5]
+
+# Seleccionar el 3er elemento del vector "miVector_3"
+miVector_3[3]
+
+# Seleccionar el 2do y 5to elemento del vector "miVector_3"
+miVector_3[c(2,5)]
+
+```
+
+## Operadores de asignación
+
+Permite asignar datos a variables:
+
+```{r out.width="80%", fig.align='center'}
+knitr::include_graphics("figures/operadorAsignacion.PNG")
+```
+
+Aunque se puede usar el símbolo `<-` o `=` se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.
+
