@@ -390,7 +390,7 @@ div.tocify {
 </div>
 <div id="tipos-de-datos" class="section level2">
 <h2>Tipos de datos</h2>
-<p>En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.</p>
+<p>Los datos son registros, observaciones o mediciones de cosas (personas, animales, localidad, clima) que ocurren en el tiempo y el espacio. Estos pueden ser cuantitativos o cualitativos. En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.</p>
 <p>R tiene cinco clases básicas de variables:</p>
 <ul>
 <li><p>Entero, representan números enteros. Pueden ser usados en operaciones matemáticas.</p></li>
@@ -532,10 +532,13 @@ miVector_3 &lt;- c(letters)
 
 # Usando la función rep
 miVector_4 &lt;- rep(x = 13, times = 4)</code></pre>
-<p>En R existen diferentes funciones. Éstas han sido diseñadas para realizar una labor específica Se identifican por tener un nombre particular seguido por unos paréntesis <code>()</code>. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:</p>
+<p>En R existen diferentes funciones. Éstas han sido diseñadas para realizar una tarea específica. Se identifican por tener un nombre particular seguido por unos paréntesis <code>()</code>. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:</p>
 <pre class="r"><code># Crear una secuencia numérica del 1 al 10 cada 2 unidades
 seq(from = 1, to = 10, by = 2)</code></pre>
 <pre><code>## [1] 1 3 5 7 9</code></pre>
+<pre class="r"><code># Redondear un número
+round(x = 2.458793, digits = 2)</code></pre>
+<pre><code>## [1] 2.46</code></pre>
 <pre class="r"><code># Sumar los primeros 5 números
 sum(c(1:5))</code></pre>
 <pre><code>## [1] 15</code></pre>
@@ -554,51 +557,6 @@ miVector_3[3]</code></pre>
 <pre class="r"><code># Seleccionar el 2do y 5to elemento del vector &quot;miVector_3&quot;
 miVector_3[c(2,5)]</code></pre>
 <pre><code>## [1] &quot;b&quot; &quot;e&quot;</code></pre>
-</div>
-<div id="operadores-de-asignación" class="section level2">
-<h2>Operadores de asignación</h2>
-<p>Permite asignar datos a variables:</p>
-<pre class="r"><code>library(kableExtra)
-tibble::tibble(
-  operador = c(&quot;&lt;-&quot;, &quot;=&quot;),
-  `Operación` = c(&quot;Asigna un valor a una variable&quot;,
-                &quot;Asigna un valor a una variable&quot;)
-) %&gt;% 
-  kbl(booktabs = T) %&gt;% 
-  kable_styling(bootstrap_options = &quot;striped&quot;,
-                full_width = F,
-                position = &quot;center&quot;)</code></pre>
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-operador
-</th>
-<th style="text-align:left;">
-Operación
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-&lt;-
-</td>
-<td style="text-align:left;">
-Asigna un valor a una variable
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-=
-</td>
-<td style="text-align:left;">
-Asigna un valor a una variable
-</td>
-</tr>
-</tbody>
-</table>
-<p>Aunque se puede usar el símbolo <code>&lt;-</code> o <code>=</code> se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.</p>
 </div>
 
 

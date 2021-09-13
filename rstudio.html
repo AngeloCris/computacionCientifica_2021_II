@@ -36,6 +36,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -422,6 +424,135 @@ div.tocify {
 <p>Para el desarrollo del presente curso se necesitará instalar el software estadístico <a href="https://cran.r-project.org/bin/windows/base/">R-project</a>. También, es recomendable instalar un editor de texto. Por simplicidad, se recomienda utilizar <a href="https://www.rstudio.com/products/rstudio/download/%5D">R-studio</a>.</p>
 <pre class="r"><code>knitr::include_graphics(&quot;figures/ventanasRstudio.png&quot;)</code></pre>
 <p><img src="figures/ventanasRstudio.png" width="1682" /></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>La consola</strong>. Aquí se escriben los comandos de código y se obtiene directamente los resultados sobre lo que se realizó.</p></li>
+<li><p><strong>Editor de código</strong>. Permite escribir y reproducir los comandos realizados, siempre en cuando se guarde el archivo en formaro <em>.R</em>.</p></li>
+<li><p><strong>Espacio de trabajo e historial</strong>. El espacio de trabajo o <em>environment</em> muestra los objetos almacenados en la memoria de <strong>R</strong>. Por ejemplo, datos que importemos. El historial o <strong>history</strong> muestra los comandos que previamente se envió a R.</p></li>
+<li><p><strong>Ficheros, visualizaciones, ayuda y paquetes</strong></p>
+<ul>
+<li><em>Files</em>, permite ver y explorar los archivos de nuestro computador.</li>
+<li><em>Plots</em>, muestra las figuras realizadas y permite exportarlas en diferentes formatos.</li>
+<li><em>Package</em>, permite gestionar (instalar, actualizar) las diferentes paqueterías desarrolladas en R.</li>
+<li><em>Help</em> da acceso a varias páginas de ayuda.</li>
+<li><em>Viewer</em> puede ser usada para visualizar documentos en formato HTML realizados en R.</li>
+</ul></li>
+</ol>
+<div id="mi-primer-comando" class="section level3">
+<h3>Mi primer comando</h3>
+<p>Para iniciar: Abrir Rstudio, luego en la consola escribir <code>1 + 3</code> debería aparecer en el indicador <code>&gt;</code>. Luego presione enter.</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/firstCommand.PNG&quot;)</code></pre>
+<p><img src="figures/firstCommand.PNG" width="80%" style="display: block; margin: auto;" /> Trata de realizar operaciones aritméticas simples (suma, resta, división, multiplicación).</p>
+<pre class="r"><code># suma
+2 + 5</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code># resta
+45 - 12</code></pre>
+<pre><code>## [1] 33</code></pre>
+<pre class="r"><code># multiplicación
+2 * 10</code></pre>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code># división
+2 / 10</code></pre>
+<pre><code>## [1] 0.2</code></pre>
+<pre class="r"><code># potencia
+3 ^ 2</code></pre>
+<pre><code>## [1] 9</code></pre>
+</div>
+<div id="almacenar-y-reusar-resultados" class="section level3">
+<h3>Almacenar y reusar resultados</h3>
+<p>Para asignar valores a un objeto se debe emplear los llamados <em>operadores de asignación</em> <code>&lt;-</code> o <code>=</code>.</p>
+<pre class="r"><code>library(kableExtra)
+tibble::tibble(
+  operador = c(&quot;&lt;-&quot;, &quot;=&quot;),
+  `Operación` = c(&quot;Asigna un valor a una variable&quot;,
+                &quot;Asigna un valor a una variable&quot;)
+) %&gt;% 
+  kbl(booktabs = T) %&gt;% 
+  kable_styling(bootstrap_options = &quot;striped&quot;,
+                full_width = F,
+                position = &quot;center&quot;)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+operador
+</th>
+<th style="text-align:left;">
+Operación
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+&lt;-
+</td>
+<td style="text-align:left;">
+Asigna un valor a una variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+Asigna un valor a una variable
+</td>
+</tr>
+</tbody>
+</table>
+<p>Aunque se puede usar el símbolo <code>&lt;-</code> o <code>=</code> se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.</p>
+<p>Para correr un proceso señalar con el cursos del mouse la línea del script a ejecutar. Luego hacer click en el boton <code>Run</code> ubicado en la parte superior derecha del panel del script o usar la combinación de teclas <code>ctrl + enter</code>.</p>
+<pre class="r"><code># asignamos un nombre a la operación
+a &lt;- 2 + 5
+
+# Obtenemos los resultados de la operación
+a</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code># Podemos realizar operaciones
+a * 5</code></pre>
+<pre><code>## [1] 35</code></pre>
+<p><strong>¿Que nombres emplear?</strong></p>
+<p>Se pueden emplear letras, números o caracteres especiales como <code>.</code>; <code>_</code>. Algunos ejemplos son: <code>var_1</code>, <code>var.1</code>, <code>VAR1</code>, <code>myVar1</code>. Recordemos que R es muy sensible a las mayúsculas y minúsculas, <code>Mi_var</code> y <code>mi_var</code> son diferentes. Evitar espacios en los nombres de los objetos ya que será mas fácil de trabajar con ellos.</p>
+</div>
+<div id="crear-un-script" class="section level3">
+<h3>Crear un script</h3>
+<p>Para crear un script ir a <code>file -&gt; New file -&gt; Rscript</code>.</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/firstScript.png&quot;)</code></pre>
+<p><img src="figures/firstScript.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Repetir todas las operaciones realizadas anteriormente pero ahora escribiéndolas en el nuevo script. ¿Qué observa?</p>
+</div>
+<div id="importante" class="section level3 unnumbered keypoints">
+<h3 class="unnumbered keypoints">Importante</h3>
+<p>Cuando escribas instrucciones en el script de R, debemos asegurarnos que todas las instrucciones se encuentren allí y no tipear directamente en la consola. Si tipeamos unos comandos en el script y otros en la consola, pronto tendremos un desorden en los procedimientos y dificultades al momento de intentar reproducirlo generando una gran frustación.</p>
+</div>
+<div id="comentando-tu-script" class="section level3">
+<h3>Comentando tu script</h3>
+<p>Tomar apuntes respecto a lo que hace cada línea de código es de vital importancia para uno mismo o para otra persona con la que compartas tu código.</p>
+<p>En R podemos realizar comentarios empezando una línea con el caracter <code>#</code>. Todo lo que se escriba después del <code>#</code> será ignorado por R. Se recomienda tomar nota</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/firstComment.PNG&quot;)</code></pre>
+<p><img src="figures/firstComment.PNG" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="guardar-y-mantener-seguro-tu-script" class="section level3">
+<h3>Guardar y mantener seguro tu script</h3>
+<p>Nuestro script contiene todo las instrucciones y detalles de un trabajo especifico por tanto será importante guardarlo y mantener seguro generando respaldos si es necesario. Para realizar este proceso ir a <code>file -&gt; Save us ..</code> o usa la combinación de teclas <code>ctrl + s</code>. Asigna al script un nombre fácil de ubicar pero que signifique algo para nosotros (idealmente un nombre conciso sobre lo que hace el script o los datos que contiene).</p>
+</div>
+<div id="errores-comunes" class="section level3">
+<h3>Errores comunes</h3>
+<p>Probablemente experimentaras diferentes errores a lo largo de este proceso de aprendizaje. Algunos de los más comunes son los siguientes:</p>
+<ul>
+<li>Objeto no encontrado. R no encontrará un objeto si no ha sido definido previamente.</li>
+</ul>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/errorMissedObject.PNG&quot;)</code></pre>
+<p><img src="figures/errorMissedObject.PNG" width="266" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p>Advertencias. El código se ejecutará pero se notificará un mensaje de advertencia lo que significa que el código puede que no esté haciendo lo que se pretende o que R ha reconocido algo que solicitaste como riesgoso. <strong>Nunca ignores un mensaje de advertencia</strong></p></li>
+<li><p>El temido <code>+</code>. Otro error es un resultado en la consola que luce como:<br />
+Esto significa que la sintaxis del código escrito no esta completo. El <code>+</code> en la consola es la forma de decir de R “estos esperando que el proceso se termine”. Cuando vea el <code>+</code> presione la tecla <code>esc</code> y vuelva a ejecutar todo el comando escrito correctamente.</p></li>
+</ul>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/errorTemido.PNG&quot;)</code></pre>
+<p><img src="figures/errorTemido.PNG" width="30%" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 
 
