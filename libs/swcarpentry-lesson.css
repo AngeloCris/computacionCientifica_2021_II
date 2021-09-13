@@ -135,7 +135,7 @@
   margin: 0 0 20px 0;  /* top right bottom left */
 }
 
-.keypoints h2 {
+.keypoints h3 {
   background: linear-gradient(to bottom, #7ae78e, #87e999);
   border-color: #7ae78e;
   margin-block-start: 0em;
@@ -151,7 +151,7 @@
   */
 }
 
-.keypoints h2:before {
+.keypoints h3:before {
   font-family: 'Glyphicons Halflings';
   content: "";
   display: inline-block;
