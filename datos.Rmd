@@ -18,7 +18,7 @@ output:
 
 ## Tipos de datos
 
-En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.
+Los datos son registros, observaciones o mediciones de cosas (personas, animales, localidad, clima) que ocurren en el tiempo y el espacio. Estos pueden ser cuantitativos o cualitativos. En R los datos pueden ser de diferentes tipos. Cada tipo tiene características particulares que los distinguen de los demás. Entre otras cosas algunas operaciones sólo pueden realizarse con tipos de datos específicos.
 
 R tiene cinco clases básicas de variables:
 
@@ -90,11 +90,14 @@ miVector_3 <- c(letters)
 miVector_4 <- rep(x = 13, times = 4)
 ```
 
-En R existen diferentes funciones. Éstas han sido diseñadas para realizar una labor específica Se identifican por tener un nombre particular seguido por unos paréntesis `()`. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:
+En R existen diferentes funciones. Éstas han sido diseñadas para realizar una tarea específica. Se identifican por tener un nombre particular seguido por unos paréntesis `()`. Dentro de los paréntesis uno puede agregar diferentes argumentos que permitirán controlar los ajustes de la función. Ejemplo:
 
 ```{r}
 # Crear una secuencia numérica del 1 al 10 cada 2 unidades
 seq(from = 1, to = 10, by = 2)
+
+# Redondear un número
+round(x = 2.458793, digits = 2)
 
 # Sumar los primeros 5 números
 sum(c(1:5))
@@ -119,27 +122,3 @@ miVector_3[3]
 miVector_3[c(2,5)]
 
 ```
-
-## Operadores de asignación
-
-Permite asignar datos a variables:
-
-```{r}
-
-library(kableExtra)
-tibble::tibble(
-  operador = c("<-", "="),
-  `Operación` = c("Asigna un valor a una variable",
-                "Asigna un valor a una variable")
-) %>% 
-  kbl(booktabs = T) %>% 
-  kable_styling(bootstrap_options = "striped",
-                full_width = F,
-                position = "center")
-```
-
-Aunque se puede usar el símbolo `<-` o `=` se recomienda emplear el primero debido a que es más fácil de reconocerlo visualmente. Además, no genera problemas en procesos más complejos de programación.
-
-
-
-
