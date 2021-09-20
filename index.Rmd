@@ -25,7 +25,8 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     - Variables en R, input/output \
     [Semana 3](./datos.html)
     
-    - Operaciones matriciales y por elemento
+    - Operaciones matriciales y por elemento \
+    [Semana 4](./datos.html)
     
     - Uso y operaciones con dataframe\
 
