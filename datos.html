@@ -385,7 +385,7 @@ div.tocify {
 <ul>
 <li><p>Reconocer los tipos de variables disponibles en R</p></li>
 <li><p>Construir series de datos con distintos procedimientos</p></li>
-<li><p>Realizar operaciones básicas en R</p></li>
+<li><p>Realizar operaciones básicas en R (vectores, matrices, dataframes)</p></li>
 </ul>
 </div>
 <div id="tipos-de-datos" class="section level2">
@@ -558,6 +558,205 @@ miVector_3[3]</code></pre>
 miVector_3[c(2,5)]</code></pre>
 <pre><code>## [1] &quot;b&quot; &quot;e&quot;</code></pre>
 </div>
+<div id="estructura-de-datos" class="section level2">
+<h2>Estructura de datos</h2>
+<p>Son objetos que contienen datos. Cuando utilizamos R, estamos manipulando estas estructuras.</p>
+<p>Una estructura de datos puede tener diferentes características que las distinguen una de otra como por ejemplo el <strong>número de dimensiones</strong>, o si son datos <strong>homogéneos</strong> o <strong>heterogéneos</strong>.</p>
+<pre class="r"><code>knitr::include_graphics(&quot;figures/estructuraDatos.PNG&quot;)</code></pre>
+<div class="figure">
+<img src="figures/estructuraDatos.PNG" alt="Principales estructuras de control en R" width="1306" />
+<p class="caption">
+Principales estructuras de control en R
+</p>
+</div>
+<div id="vector" class="section level3">
+<h3>Vector</h3>
+<p>Es la estructura más simple en R. Un vector es una colección de uno o más datos del mismo tipo. Dos propiedades importantes son:</p>
+<ul>
+<li><p><strong>Tipo</strong>, un vector tiene el mismo tipo de dato (númerico, lógico, caracter)</p></li>
+<li><p><strong>Largo</strong>, es el número de elementos que contiene un vector. El largo es la única <strong>dimensión</strong> que tiene esta estructura de datos.</p></li>
+</ul>
+<p>Para crear un vector existen diferentes funciones, una de ellas es <code>c()</code></p>
+<pre class="r"><code># Vector numérico
+c(1,4,5,6,7)</code></pre>
+<pre><code>## [1] 1 4 5 6 7</code></pre>
+<pre class="r"><code># Vector de cadena de texto
+c(&quot;reloj&quot;,&quot;mesa&quot;,&quot;cadena&quot;)</code></pre>
+<pre><code>## [1] &quot;reloj&quot;  &quot;mesa&quot;   &quot;cadena&quot;</code></pre>
+<pre class="r"><code># Vector lógico
+c(TRUE, TRUE, FALSE, TRUE, FALSE)</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
+<p>Podemos crear vectores que son combinaciones de vectores</p>
+<pre class="r"><code>miVector_1 &lt;- c(3,6,8)
+miVector_2 &lt;- c(2,9,3)
+
+miVector_3 &lt;- c(miVector_1, miVector_2)</code></pre>
+<p>Si intentamos combinar datos de diferentes tipos en un mismo vector, R realizará coerción automáticamente, por ejemplo:</p>
+<pre class="r"><code>miVector_4 &lt;- c(5,7,9)
+class(miVector_4)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Si intentamos agregar un dato del tipo caracter, el vector automáticamente se transformará en uno del tipo caracter.</p>
+<pre class="r"><code>miVector_5 &lt;- c(miVector_4,&quot;a&quot;)
+class(miVector_5)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div id="vectorización-de-operaciones" class="section level4">
+<h4>Vectorización de operaciones</h4>
+<p>Las operaciones aritméticas y relacionales pueden vectorizarse. Si aplicamos a un vector, la operación se realizará para cada uno de los elementos que contiene el vector.</p>
+<pre class="r"><code># Vector numérico
+miVector_4</code></pre>
+<pre><code>## [1] 5 7 9</code></pre>
+<pre class="r"><code># Operaciones aritméticas
+miVector_4 + 2</code></pre>
+<pre><code>## [1]  7  9 11</code></pre>
+<pre class="r"><code>miVector_4 * 2</code></pre>
+<pre><code>## [1] 10 14 18</code></pre>
+<pre class="r"><code>miVector_4 %% 2</code></pre>
+<pre><code>## [1] 1 1 1</code></pre>
+<pre class="r"><code>miVector_4 &gt; 7</code></pre>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<pre class="r"><code>miVector_4 &lt; 2</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>miVector_4 == 7</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<p>Esta manera de operar es muy eficiente, especialmente cuando se trabaja con una gran cantidad de datos. Aunque este mismo proceso de vectorización puede funcionar en otras estructura de datos.</p>
+</div>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+<p>Las matrices pueden ser descritas como vectores multidimensionales. Al igual que un vector únicamente pueden contener <strong>datos de un sólo tipo</strong> pero además de largo, tienen más <strong>dimensiones</strong> (largo y alto). Es una estructura de datos de uso común en R en la que nos enfocaremos en esta sección.</p>
+<div id="creación-de-matrices" class="section level4">
+<h4>Creación de matrices</h4>
+<p>Las matrices se pueden crear con la función <code>matrix()</code>. Esta función acepta dos argumentos: <code>nrow</code> y <code>ncol</code> las cuales especifican el número de filas y columnas, respectivamente.</p>
+<pre class="r"><code># Vector numérico
+1:6</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6</code></pre>
+<pre class="r"><code># Matriz sin especificar el N° de filas o columnas
+matrix(1:6)</code></pre>
+<pre><code>##      [,1]
+## [1,]    1
+## [2,]    2
+## [3,]    3
+## [4,]    4
+## [5,]    5
+## [6,]    6</code></pre>
+<pre class="r"><code># Matriz con 4 filas y 4 columnas
+matrix(1:18, nrow = 3, ncol = 6)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    4    7   10   13   16
+## [2,]    2    5    8   11   14   17
+## [3,]    3    6    9   12   15   18</code></pre>
+<p>Los datos se acomodaran en el orden de arriba - abajo y de izquierda a derecha. Es importante mencionar que si el número de elementos es mayor a las celdas de la matriz, se acomodarán todos los datos posibles y los demás serán omitidos.</p>
+<pre class="r"><code># El vector contiene 12 elementos pero la matriz solo 9 celdas
+matrix(1:12, nrow = 3, ncol = 3)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>Si por el contrario, el número de celdas es mayor al número de elementos, estos se <strong>reciclaran</strong> sin antes advertirnos. Luego R empezará a usar los elementos a partir del primero de ellos.</p>
+<pre class="r"><code>matrix(1:18, nrow = 6, ncol = 4)</code></pre>
+<pre><code>## Warning in matrix(1:18, nrow = 6, ncol = 4): data length [18] is not a sub-multiple or multiple
+## of the number of columns [4]</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    7   13    1
+## [2,]    2    8   14    2
+## [3,]    3    9   15    3
+## [4,]    4   10   16    4
+## [5,]    5   11   17    5
+## [6,]    6   12   18    6</code></pre>
+<p>Otra forma de crear matrices es uniendo vectores con las funciones:</p>
+<ul>
+<li><p><code>cbind()</code> para unir vectores, usando cada uno como columna</p></li>
+<li><p><code>rbind()</code> para unir vectores, usando cada uno como un renglón.</p></li>
+</ul>
+<pre class="r"><code># Usamos los vectores antes creados
+# miVector_1
+# miVector_2
+# miVector_4
+
+miMatriz_1 &lt;- rbind(miVector_1, miVector_2)
+
+# Resultado
+miMatriz_1</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    3    6    8
+## miVector_2    2    9    3</code></pre>
+<pre class="r"><code>miMatriz_2 &lt;- rbind(miVector_1,
+                    miVector_2,
+                    miVector_4)
+# Resultado
+miMatriz_2</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    3    6    8
+## miVector_2    2    9    3
+## miVector_4    5    7    9</code></pre>
+<p>Si utilizamos <code>cbind()</code> cada vector será una columna</p>
+<pre class="r"><code>miMatriz_3 &lt;- cbind(miVector_1, 
+                    miVector_2,
+                    miVector_4)</code></pre>
+<p>De la misma manera como con la función <code>matrix()</code>, los elementos serán reciclados para formar una estructura rectangular y se nos muestra un mensaje de advertencia</p>
+<pre class="r"><code># Elementos de diferentes largos
+miMatriz_4 &lt;- cbind(miVector_1, miVector_2, miVector_3)
+
+# Resultado
+miMatriz_4</code></pre>
+<pre><code>##      miVector_1 miVector_2 miVector_3
+## [1,]          3          2          3
+## [2,]          6          9          6
+## [3,]          8          3          8
+## [4,]          3          2          2
+## [5,]          6          9          9
+## [6,]          8          3          3</code></pre>
+<p>Por último, las matrices pueden contener valores <em>NA</em> para representar valores perdidos, por ejemplo:</p>
+<pre class="r"><code>vector_1 &lt;- c(2, 5, NA)
+vector_2 &lt;- c(NA, 98, 43)
+miMatriz_5 &lt;- rbind(vector_1, vector_2)</code></pre>
+</div>
+<div id="propiedades-de-las-matrices" class="section level4">
+<h4>Propiedades de las matrices</h4>
+<p>Al igual que los vectores, sólo pueden contener un tipo de dato. Sin embargo, a diferencia del primero, las matrices pueden tener más de una dimensión. Podemos obtener las dimensiones de una matriz con la función <code>dim()</code></p>
+<pre class="r"><code>miMatriz_1</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    3    6    8
+## miVector_2    2    9    3</code></pre>
+<pre class="r"><code>dim(miMatriz_1)</code></pre>
+<pre><code>## [1] 2 3</code></pre>
+<p>Las operaciones aritméticas también son vectorizadas cuando se aplica a una matriz. La operación es aplicada a cada uno de los elementos.</p>
+<pre class="r"><code>miMatriz_2</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    3    6    8
+## miVector_2    2    9    3
+## miVector_4    5    7    9</code></pre>
+<pre class="r"><code># suma
+miMatriz_2 + 1</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    4    7    9
+## miVector_2    3   10    4
+## miVector_4    6    8   10</code></pre>
+<pre class="r"><code># multiplicación
+miMatriz_2 * 2</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    6   12   16
+## miVector_2    4   18    6
+## miVector_4   10   14   18</code></pre>
+<pre class="r"><code># potencia
+miMatriz_2 ^ 2</code></pre>
+<pre><code>##            [,1] [,2] [,3]
+## miVector_1    9   36   64
+## miVector_2    4   81    9
+## miVector_4   25   49   81</code></pre>
+<p>Si intentamos realizar una operación aritmética a una matriz que presenta valores perdidos (NA), las operaciones sólo serán realizadas para aquellos elementos válidos, devolviendo NA cuando corresponda.</p>
+<pre class="r"><code># Matriz con NA
+miMatriz_5</code></pre>
+<pre><code>##          [,1] [,2] [,3]
+## vector_1    2    5   NA
+## vector_2   NA   98   43</code></pre>
+<pre class="r"><code>miMatriz_5 / 2</code></pre>
+<pre><code>##          [,1] [,2] [,3]
+## vector_1    1  2.5   NA
+## vector_2   NA 49.0 21.5</code></pre>
+</div>
+</div>
+</div>
 
 
 
@@ -613,7 +812,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2,h3,h4,h5,h6",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
