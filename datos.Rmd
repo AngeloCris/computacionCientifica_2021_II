@@ -3,7 +3,7 @@ pagetitle: "Datos"
 output:
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 6
     toc_float: true
     code_folding: "show"
 ---
@@ -14,7 +14,7 @@ output:
 
 - Construir series de datos con distintos procedimientos
 
-- Realizar operaciones básicas en R
+- Realizar operaciones básicas en R (vectores, matrices, dataframes)
 
 ## Tipos de datos
 
@@ -122,3 +122,233 @@ miVector_3[3]
 miVector_3[c(2,5)]
 
 ```
+
+## Estructura de datos
+
+Son objetos que contienen datos. Cuando utilizamos R, estamos manipulando estas estructuras.
+
+Una estructura de datos puede tener diferentes características que las distinguen una de otra como por ejemplo el **número de dimensiones**, o si son datos **homogéneos** o **heterogéneos**.
+
+```{r fig.cap="Principales estructuras de control en R"}
+knitr::include_graphics("figures/estructuraDatos.PNG")
+```
+
+
+### Vector
+
+Es la estructura más simple en R. Un vector es una colección de uno o más datos del mismo tipo. Dos propiedades importantes son: 
+
+- **Tipo**, un vector tiene el mismo tipo de dato (númerico, lógico, caracter)
+    
+- **Largo**, es el número de elementos que contiene un vector. El largo es la única **dimensión** que tiene esta estructura de datos.
+    
+Para crear un vector existen diferentes funciones, una de ellas es `c()`
+    
+```{r}
+# Vector numérico
+c(1,4,5,6,7)
+```
+
+```{r}
+# Vector de cadena de texto
+c("reloj","mesa","cadena")
+```
+
+```{r}
+# Vector lógico
+c(TRUE, TRUE, FALSE, TRUE, FALSE)
+```
+
+Podemos crear vectores que son combinaciones de vectores
+
+```{r}
+miVector_1 <- c(3,6,8)
+miVector_2 <- c(2,9,3)
+
+miVector_3 <- c(miVector_1, miVector_2)
+```
+
+Si intentamos combinar datos de diferentes tipos en un mismo vector, R realizará coerción automáticamente, por ejemplo:
+
+
+```{r}
+miVector_4 <- c(5,7,9)
+class(miVector_4)
+```
+
+Si intentamos agregar un dato del tipo caracter, el vector automáticamente se transformará en uno del tipo caracter.
+
+```{r}
+miVector_5 <- c(miVector_4,"a")
+class(miVector_5)
+```
+
+#### Vectorización de operaciones
+
+Las operaciones aritméticas y relacionales pueden vectorizarse. Si aplicamos a un vector, la operación se realizará para cada uno de los elementos que contiene el vector.
+
+```{r}
+# Vector numérico
+miVector_4
+
+# Operaciones aritméticas
+miVector_4 + 2
+```
+
+```{r}
+miVector_4 * 2
+```
+
+```{r}
+miVector_4 %% 2
+```
+
+```{r}
+miVector_4 > 7
+```
+
+```{r}
+miVector_4 < 2
+```
+
+```{r}
+miVector_4 == 7
+```
+
+Esta manera de operar es muy eficiente, especialmente cuando se trabaja con una gran cantidad de datos. Aunque este mismo proceso de vectorización puede funcionar en otras estructura de datos.
+
+### Matrices
+
+Las matrices pueden ser descritas como vectores multidimensionales. Al igual que un vector únicamente pueden contener **datos de un sólo tipo** pero además de largo, tienen más **dimensiones** (largo y alto). Es una estructura de datos de uso común en R en la que nos enfocaremos en esta sección.
+
+#### Creación de matrices
+
+Las matrices se pueden crear con la función `matrix()`. Esta función acepta dos argumentos: `nrow` y `ncol` las cuales especifican el número de filas y columnas, respectivamente.
+
+```{r}
+# Vector numérico
+1:6
+```
+
+```{r}
+# Matriz sin especificar el N° de filas o columnas
+matrix(1:6)
+```
+
+```{r}
+# Matriz con 4 filas y 4 columnas
+matrix(1:18, nrow = 3, ncol = 6)
+```
+
+Los datos se acomodaran en el orden de arriba - abajo y de izquierda a derecha. Es importante mencionar que si el número de elementos es mayor a las celdas de la matriz, se acomodarán todos los datos posibles y los demás serán omitidos.
+
+```{r}
+# El vector contiene 12 elementos pero la matriz solo 9 celdas
+matrix(1:12, nrow = 3, ncol = 3)
+```
+
+
+
+Si por el contrario, el número de celdas es mayor al número de elementos, estos se **reciclaran** sin antes advertirnos. Luego R empezará a usar los elementos a partir del primero de ellos.
+
+```{r}
+matrix(1:18, nrow = 6, ncol = 4)
+```
+
+Otra forma de crear matrices es uniendo vectores con las funciones:
+
+- `cbind()` para unir vectores, usando cada uno como columna
+    
+- `rbind()` para unir vectores, usando cada uno como un renglón.
+    
+```{r}
+# Usamos los vectores antes creados
+# miVector_1
+# miVector_2
+# miVector_4
+
+miMatriz_1 <- rbind(miVector_1, miVector_2)
+
+# Resultado
+miMatriz_1
+```
+
+```{r}
+miMatriz_2 <- rbind(miVector_1,
+                    miVector_2,
+                    miVector_4)
+# Resultado
+miMatriz_2
+```
+
+Si utilizamos `cbind()` cada vector será una columna
+
+```{r}
+miMatriz_3 <- cbind(miVector_1, 
+                    miVector_2,
+                    miVector_4)
+```
+
+De la misma manera como con la función `matrix()`, los elementos serán reciclados para formar una estructura rectangular y se nos muestra un mensaje de advertencia
+
+```{r}
+# Elementos de diferentes largos
+miMatriz_4 <- cbind(miVector_1, miVector_2, miVector_3)
+
+# Resultado
+miMatriz_4
+```
+
+Por último, las matrices pueden contener valores *NA* para representar valores perdidos, por ejemplo:
+
+```{r}
+vector_1 <- c(2, 5, NA)
+vector_2 <- c(NA, 98, 43)
+miMatriz_5 <- rbind(vector_1, vector_2)
+```
+
+#### Propiedades de las matrices
+
+Al igual que los vectores, sólo pueden contener un tipo de dato. Sin embargo, a diferencia del primero, las matrices pueden tener más de una dimensión. Podemos obtener las dimensiones de una matriz con la función `dim()`
+
+```{r}
+miMatriz_1
+```
+
+```{r}
+dim(miMatriz_1)
+```
+
+Las operaciones aritméticas también son vectorizadas cuando se aplica a una matriz. La operación es aplicada a cada uno de los elementos.
+
+```{r}
+miMatriz_2
+```
+
+
+```{r}
+# suma
+miMatriz_2 + 1
+```
+
+```{r}
+# multiplicación
+miMatriz_2 * 2
+```
+
+```{r}
+# potencia
+miMatriz_2 ^ 2
+```
+
+Si intentamos realizar una operación aritmética a una matriz que presenta valores perdidos (NA), las operaciones sólo serán realizadas para aquellos elementos válidos, devolviendo NA cuando corresponda.
+
+```{r}
+# Matriz con NA
+miMatriz_5
+```
+
+```{r}
+miMatriz_5 / 2
+```
+
