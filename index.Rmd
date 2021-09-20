@@ -30,7 +30,7 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     
     - Uso y operaciones con dataframe\
 
-3. Septiembre 20: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
+3. Octubre 4: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
 
     - Operadores aritméticos y lógicos. Diagramas de flujo
     
@@ -38,13 +38,13 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     
     - Ciclos o bucles
     
-4. Septiembre 27: **Funciones**. Implementar funciones personalizadas para desarrollar tareas específicas. Emplear funciones gráficas para la visualización de datos. Este tópico se sub-dividirá en 3 semanas donde se abordarán los siguientes puntos:
+4. Octubre 25: **Funciones**. Implementar funciones personalizadas para desarrollar tareas específicas. Emplear funciones gráficas para la visualización de datos. Este tópico se sub-dividirá en 3 semanas donde se abordarán los siguientes puntos:
 
     - Funciones en R. 
     
     - Funciones gráficas I y II
 
-5. Octubre 4: **Aplicaciones**. Desarrollar una función con aplicación biológicas. Trabajo final.
+5. Noviembre: **Aplicaciones**. Desarrollar una función con aplicación biológicas. Trabajo final.
 
 
 
