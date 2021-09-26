@@ -28,7 +28,8 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     - Operaciones matriciales y por elemento \
     [Semana 4](./datos.html)
     
-    - Uso y operaciones con dataframe\
+    - Uso y operaciones con dataframe \
+    [Semana 5](./datos.html)
 
 3. Octubre 4: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
 

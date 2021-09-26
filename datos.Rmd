@@ -352,3 +352,182 @@ miMatriz_5
 miMatriz_5 / 2
 ```
 
+### Dataframes
+
+
+Son estructuras de datos de dos dimensiones que pueden almacenar datos de diferentes tipos, por tanto son heterogéneas. **Es la más usada para realizar análisis de datos**.
+
+```{r}
+knitr::include_graphics("figures/estructuraDataframe.PNG")
+```
+
+Para crear un estructura de datos del tipo dataframe empleamos la función `data.frame()`. Recordemos que **un dataframe esta compuesto por vectores**.
+
+```{r}
+mi_df <- 
+  data.frame(nombre = c("Alberto", "Maria", "Javier"),
+           edad = c(19, 21, 20),
+           talla = c(170, 165, 162))
+
+```
+
+Podemos usar la función `dim()` para determinar las dimensiones del dataframe.
+
+```{r}
+dim(mi_df)
+```
+
+El largo de un data frame es igual al número de columnas
+
+```{r}
+length(mi_df)
+```
+
+La función `names()` nos permite ver los nombres de las variables (columnas).
+
+```{r}
+names(mi_df)
+```
+
+#### Importar un dataframe
+
+Por otro lado, podemos importar un data frame en un formato distinto a R como por ejemplo en formato *.xlsx*, *.csv*, *.txt* entre otros. Para importar un dataframe en formato *csv* o *txt* se puede emplear la función `read.csv()` o `read.table()`, respectivamente.
+
+#### Importante {.unnumbered .keypoints}
+
+Siempre se debe direccionar antes la ruta de trabajo mediante la función `setwd()` o crear un proyecto en R dentro del cual contenga todas los archivos de trabajo.
+
+```{r results='hide'}
+crabs <- read.csv("datos/dataSem_4_2021.txt")
+```
+
+
+#### Propiedades de un data frame
+
+Al igual que una matriz, si aplicamos una operación aritmética a un dataframe, esta se vectorizará.
+
+```{r}
+head(crabs)
+```
+
+```{r}
+head(crabs$CL / 10)
+```
+
+Algunas funciones que pueden resultar útiles para explorar rápidamente la estructura de nuestros datos son: `summary()`, `head()`, `tail()`, `str()`.
+
+
+```{r results='hide'}
+# Resumen estadístico de los datos
+summary(mtcars)
+
+# Primeras filas de mtcars
+head(mtcars)
+
+# últimas filas de mtcars
+tail(mtcars)
+
+# Estructura (tipo de dato) de mtcars
+str(mtcars)
+```
+
+
+#### Manipulación de datos
+
+Para iniciar esta sección es importante recordar los diferentes tipos de operadores que se utilizó en las clases anteriores.  Estas fueron:
+ 
+- Operadores aritméticos
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("figures/operadorAritmetico.PNG")
+```
+
+- Operadores relacionales
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("figures/operadorRelacional.PNG")
+```
+
+- Operadores lógicos
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("figures/operadorLogico.PNG")
+```
+
+Con los operadores en mente, procederemos a manipular la base de datos `crabs` que importamos anteriormente.
+
+```{r }
+head(crabs)
+```
+
+##### Selección de datos
+
+```{r results='hide'}
+# Seleccionar datos
+# Primer argumento son las filas
+# El segundo, las columnas (si no se coloca un número)
+# por defecto R seleccionará todas las columnas
+crabs[3,]
+crabs[1:5,]
+crabs[c(2,4),]
+crabs[,-1]
+# Otras formas de selección
+crabs$Year
+crabs[,c("Year", "Island")]
+
+```
+
+##### Filtrar datos
+
+```{r results='hide'}
+# Filtrar datos
+# Se filtran los valores de cangrejos cuya
+# longitud de cefalotorax es mayor a 100
+crabs[crabs$CL > 100,]
+
+# Se filtran los valores de cangrejos cuya
+# longitud de cefalotorax se encuentre entre
+# 100 y 110
+crabs[crabs$CL >= 100 & crabs$CL <= 110,]
+crabs[crabs$Sex == "F" & crabs$Month > 10,]
+
+# Se filtran solo los cangrejos de sexo hembras ("H")
+# y/o ovígeras ("O").
+crabs[!crabs$Sex == "M",]
+```
+
+##### Ordenar datos
+
+```{r results='hide'}
+# Ordena el dataframe en función al sexo
+crabs[order(crabs$Sex),]
+# Ordena el dataframe en función al sexo y mes
+crabs[order(crabs$Sex, crabs$Month),]
+```
+
+##### Función apply
+
+Operación útil para hacer operaciones por fila o columna de una matriz.
+
+```{r results='hide'}
+x <- matrix(rep(1:6, each = 5), nrow = 5, ncol = 6)
+
+# Adjunta el vector resultado en una nueva columna
+x.1 <- cbind(x, apply(x, 1, sum))
+
+# Adjunta el vector resultado en una nueva fila
+x.2 <- rbind(x, apply(x, 2, sum))
+```
+
+##### Valores NA
+
+```{r results='hide'}
+# Valores NA
+table(is.na(crabs))
+# Cuales son los NA
+which(is.na(crabs))
+crabs[which(is.na(crabs)),]
+# Eliminar NA
+crabs <- na.omit(crabs)
+```
+
