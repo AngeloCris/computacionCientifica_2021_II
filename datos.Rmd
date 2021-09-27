@@ -352,6 +352,16 @@ miMatriz_5
 miMatriz_5 / 2
 ```
 
+**Multiplicación de matrices**. Un multiplicación de matrices ocurrirá siempre y cuando el número de columnas de la primera matriz es igual al número de filas de la segunda matriz. En R, el operador aritmético para realizar esta operación es `%*%`. Si empleamos solo el operador `*` la multiplicación se realizará por elemento.
+
+```{r}
+# Multiplicación matricial
+miMatriz_1 %*% miMatriz_2
+# Multiplicación por elemento
+miMatriz_1 * miMatriz_5
+```
+
+
 ### Dataframes
 
 
