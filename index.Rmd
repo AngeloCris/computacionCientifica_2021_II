@@ -33,9 +33,10 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
 
 3. Octubre 4: **Programación**. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:
 
-    - Operadores aritméticos y lógicos. Diagramas de flujo
+    - Operadores aritméticos y lógicos. Diagramas de flujo 
     
-    - Condicionales
+    - Condicionales [Semana 7] \
+    [Semana 7](./condicionales.html)
     
     - Ciclos o bucles
     
