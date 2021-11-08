@@ -475,7 +475,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 <pre class="r"><code>if (1:10 &lt; 3) {
   &quot;Verdadero&quot;
 }</code></pre>
-<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element will be used</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element will
+## be used</code></pre>
 <pre><code>## [1] &quot;Verdadero&quot;</code></pre>
 <p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
 <p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
@@ -495,26 +496,28 @@ ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
 
 numeros &lt;- 1:60
 ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
-<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [13] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [25] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [37] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [49] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [11] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [21] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [31] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [51] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
 <p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
 <pre class="r"><code>numeros &lt;- 1:20
 
 ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
        &quot;Divisible&quot;,
        &quot;No divisible&quot;)</code></pre>
-<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
-##  [7] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
-## [13] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
-## [19] &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
+<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+##  [6] &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+## [11] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+## [16] &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
 <p>Conocer esta función puede ser particularmente útil para recodificar datos. Por ejemplo:</p>
 <pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
 sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
 sexo</code></pre>
-<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot;  &quot;hembra&quot;</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot; 
+## [10] &quot;hembra&quot;</code></pre>
 </div>
 <div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level3">
 <h3>Uso de condicionales y estructuras de control en un dataframe</h3>
@@ -532,10 +535,13 @@ datosCrangrejo</code></pre>
 <pre><code>## The following objects are masked from datosCrangrejo (pos = 4):
 ## 
 ##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 15):
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 5):
 ## 
 ##     C_Length, Month, Sector, Sex, Year</code></pre>
 <pre><code>## The following objects are masked from datosCrangrejo (pos = 16):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 17):
 ## 
 ##     C_Length, Month, Sector, Sex, Year</code></pre>
 <pre class="r"><code>length(datosCrangrejo$Year)</code></pre>
