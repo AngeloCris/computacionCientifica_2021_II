@@ -10,7 +10,7 @@ navbar:
     - text: "Datos"
       href: datos.html
       icon: "fas fa-database"
-    - text: "Condicionales"
+    - text: "Programación"
       href: condicionales.html
       icon: "fas fa-laptop"
   right:

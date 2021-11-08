@@ -345,7 +345,7 @@ div.tocify {
   <a href="condicionales.html">
     <span class="fas fa-laptop"></span>
      
-    Condicionales
+    Programación
   </a>
 </li>
       </ul>
@@ -385,13 +385,21 @@ div.tocify {
 </div>
 
 
-<div id="operadores-y-estructuras-de-control-sem-8-y-9" class="section level1">
-<h1>Operadores y Estructuras de control (Sem 8 y 9)</h1>
+<div id="objetivo" class="section level2 unnumbered objectives">
+<h2 class="unnumbered objectives">Objetivo</h2>
+<ul>
+<li><p>Conocer los principales comandos en la programación en R</p></li>
+<li><p>Desarrollar diagramas de flujos</p></li>
+<li><p>Crear algoritmos y opciones avanzadas de manipulación de dataframes</p></li>
+</ul>
+</div>
+<div id="condicionales" class="section level2">
+<h2>Condicionales</h2>
 <p>Nos permite controlar la manera en cómo se ejecuta nuestro código (establecen <strong>condicionales</strong>).</p>
 <p>Las estructuras de control más usadas en R son las siguiente:</p>
 <p><img src="figures/estructuraControl.PNG" width="404" /></p>
-<div id="if-else" class="section level2">
-<h2>if, else</h2>
+<div id="if-else" class="section level3">
+<h3>if, else</h3>
 <p><em>if</em> se usa cuando deseamos que una operación se ejecute cuando cumple una condición deseada (Ej. <strong>Si</strong> esta condición es cierta, <strong>entonces</strong> haz una operación específica)</p>
 <p><em>else</em> se usa para indicarle a R qué hace en caso de que la condición de un <em>if</em> no se cumpla.</p>
 <p>La estructura de un la función <em>if</em> es la siguiente</p>
@@ -460,15 +468,14 @@ promedio(c(5,8,9,6,5))</code></pre>
 <pre class="r"><code>promedio(c(3,4,4,4,5,3))</code></pre>
 <pre><code>## [1] &quot;Desaprobado&quot;</code></pre>
 </div>
-<div id="if-else-1" class="section level2">
-<h2>If else</h2>
+<div id="if-else-1" class="section level3">
+<h3>If else</h3>
 <p>La función <em>ifelse()</em> permite vectorizar if, else. En lugar de escribir una línea de código para cada comparación, podemos usar una sola llamada a esta función, que se aplicará a todos los elementos de un vector.</p>
 <p>Si intentamos usar if else con un vector, se nos mostrará una advertencia:</p>
 <pre class="r"><code>if (1:10 &lt; 3) {
   &quot;Verdadero&quot;
 }</code></pre>
-<pre><code>## Warning in if (1:10 &lt; 3) {: la condición tiene longitud &gt; 1 y sólo el primer
-## elemento será usado</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element will be used</code></pre>
 <pre><code>## [1] &quot;Verdadero&quot;</code></pre>
 <p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
 <p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
@@ -479,8 +486,7 @@ promedio(c(5,8,9,6,5))</code></pre>
 </ul>
 <pre class="r"><code>vector &lt;- 1:10
 ifelse(vector &gt; 5, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
-<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot; 
-## [10] &quot;TRUE&quot;</code></pre>
+<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
 <pre class="r"><code>edad &lt;- c(10,15,17,19, 20, 13, 11, 16, 15)
 
 ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
@@ -489,32 +495,29 @@ ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
 
 numeros &lt;- 1:60
 ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
-<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
-## [10] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [19] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
-## [28] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [37] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
-## [46] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [55] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [13] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [25] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [37] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [49] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
 <p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
 <pre class="r"><code>numeros &lt;- 1:20
 
 ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
        &quot;Divisible&quot;,
        &quot;No divisible&quot;)</code></pre>
-<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-##  [6] &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-## [11] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-## [16] &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
+<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+##  [7] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+## [13] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+## [19] &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
 <p>Conocer esta función puede ser particularmente útil para recodificar datos. Por ejemplo:</p>
 <pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
 sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
 sexo</code></pre>
-<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot; 
-##  [9] &quot;macho&quot;  &quot;hembra&quot;</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot;  &quot;hembra&quot;</code></pre>
 </div>
-<div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level2">
-<h2>Uso de condicionales y estructuras de control en un dataframe</h2>
+<div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level3">
+<h3>Uso de condicionales y estructuras de control en un dataframe</h3>
 <p>Recordemos que para hacer uso de las condicionales podemos hacer uso de las funciones <em>if</em>, <em>else</em>, <em>if else</em> y/o uso de indexaciones combinado con operadores lógicos y/o relacionales. (<a href="https://github.com/AngeloCris/computacionCientifica_2021/blob/master/semana7_8/Semana7-y-8.md" class="uri">https://github.com/AngeloCris/computacionCientifica_2021/blob/master/semana7_8/Semana7-y-8.md</a>).</p>
 <pre class="r"><code>datosCrangrejo &lt;- 
   read.table(&quot;datos/datos_cangrejos.txt&quot;,
@@ -522,8 +525,20 @@ sexo</code></pre>
              header = TRUE)
 datosCrangrejo</code></pre>
 <p>Para determinar el total de filas de mi data frame usamos la función <em>length</em>.</p>
-<pre class="r"><code>attach(datosCrangrejo)
-length(datosCrangrejo$Year)</code></pre>
+<pre class="r"><code>attach(datosCrangrejo)</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 3):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 4):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 15):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 16):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre class="r"><code>length(datosCrangrejo$Year)</code></pre>
 <pre><code>## [1] 71013</code></pre>
 <p>La base de datos muestra los registros mensuales de la longitud y sexo de un cangrejo para el periodo 2008 y 2014. En función a lo mencionado anteriormente, resolvamos lo siguiente.</p>
 <ul>

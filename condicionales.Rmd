@@ -10,7 +10,14 @@ output:
 
 ## Objetivo {.unnumbered .objectives}
 
-## Operadores y Estructuras de control 
+- Conocer los principales comandos en la programación en R
+
+- Desarrollar diagramas de flujos
+
+- Crear algoritmos y opciones avanzadas de manipulación de dataframes
+
+
+## Condicionales
 
 Nos permite controlar la manera en cómo se ejecuta nuestro código (establecen **condicionales**). 
 
