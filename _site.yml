@@ -12,7 +12,7 @@ navbar:
       icon: "fas fa-database"
     - text: "Condicionales"
       href: condicionales.html
-      icon: "fas fa-laptop-code"
+      icon: "fas fa-laptop"
   right:
     - text: "Repo"
       icon: "fab fa-github"

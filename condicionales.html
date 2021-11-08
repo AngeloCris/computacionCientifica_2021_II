@@ -343,7 +343,7 @@ div.tocify {
 </li>
 <li>
   <a href="condicionales.html">
-    <span class="fas fa-laptop-code"></span>
+    <span class="fas fa-laptop"></span>
      
     Condicionales
   </a>
@@ -467,8 +467,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 <pre class="r"><code>if (1:10 &lt; 3) {
   &quot;Verdadero&quot;
 }</code></pre>
-<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element
-## will be used</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: la condición tiene longitud &gt; 1 y sólo el primer
+## elemento será usado</code></pre>
 <pre><code>## [1] &quot;Verdadero&quot;</code></pre>
 <p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
 <p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
@@ -479,7 +479,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 </ul>
 <pre class="r"><code>vector &lt;- 1:10
 ifelse(vector &gt; 5, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
-<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
+<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot; 
+## [10] &quot;TRUE&quot;</code></pre>
 <pre class="r"><code>edad &lt;- c(10,15,17,19, 20, 13, 11, 16, 15)
 
 ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
@@ -488,12 +489,13 @@ ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
 
 numeros &lt;- 1:60
 ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
-<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [11] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [21] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [31] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [51] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [10] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [19] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [28] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [37] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [46] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [55] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
 <p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
 <pre class="r"><code>numeros &lt;- 1:20
 
@@ -508,8 +510,8 @@ ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
 <pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
 sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
 sexo</code></pre>
-<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot; 
-## [10] &quot;hembra&quot;</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot; 
+##  [9] &quot;macho&quot;  &quot;hembra&quot;</code></pre>
 </div>
 <div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level2">
 <h2>Uso de condicionales y estructuras de control en un dataframe</h2>
@@ -520,11 +522,8 @@ sexo</code></pre>
              header = TRUE)
 datosCrangrejo</code></pre>
 <p>Para determinar el total de filas de mi data frame usamos la función <em>length</em>.</p>
-<pre class="r"><code>attach(datosCrangrejo)</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 3):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre class="r"><code>length(datosCrangrejo$Year)</code></pre>
+<pre class="r"><code>attach(datosCrangrejo)
+length(datosCrangrejo$Year)</code></pre>
 <pre><code>## [1] 71013</code></pre>
 <p>La base de datos muestra los registros mensuales de la longitud y sexo de un cangrejo para el periodo 2008 y 2014. En función a lo mencionado anteriormente, resolvamos lo siguiente.</p>
 <ul>

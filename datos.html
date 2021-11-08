@@ -661,8 +661,8 @@ matrix(1:12, nrow = 3, ncol = 3)</code></pre>
 ## [3,]    3    6    9</code></pre>
 <p>Si por el contrario, el número de celdas es mayor al número de elementos, estos se <strong>reciclaran</strong> sin antes advertirnos. Luego R empezará a usar los elementos a partir del primero de ellos.</p>
 <pre class="r"><code>matrix(1:18, nrow = 6, ncol = 4)</code></pre>
-<pre><code>## Warning in matrix(1:18, nrow = 6, ncol = 4): data length [18] is not a sub-multiple or
-## multiple of the number of columns [4]</code></pre>
+<pre><code>## Warning in matrix(1:18, nrow = 6, ncol = 4): data length [18] is not a sub-multiple
+## or multiple of the number of columns [4]</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    7   13    1
 ## [2,]    2    8   14    2

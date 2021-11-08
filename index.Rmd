@@ -35,7 +35,7 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
 
     - Operadores aritméticos y lógicos. Diagramas de flujo 
     
-    - Condicionales [Semana 7] \
+    - Condicionales \
     [Semana 7](./condicionales.html)
     
     - Ciclos o bucles
