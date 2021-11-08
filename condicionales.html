@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Operadores y condicionales</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="libs/swcarpentry-lesson.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R-epaso</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Contenido</a>
+</li>
+<li>
+  <a href="rstudio.html">
+    <span class="fab fa-r-project"></span>
+     
+    studio
+  </a>
+</li>
+<li>
+  <a href="datos.html">
+    <span class="fas fa-database"></span>
+     
+    Datos
+  </a>
+</li>
+<li>
+  <a href="condicionales.html">
+    <span class="fas fa-laptop-code"></span>
+     
+    Condicionales
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/AngeloCris/computacionCientifica_2021_II">
+    <span class="fab fa-github"></span>
+     
+    Repo
+  </a>
+</li>
+<li>
+  <a href="bibliografia.html">
+    <span class="fas fa-search"></span>
+     
+    Bibliografia
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<div id="operadores-y-estructuras-de-control-sem-8-y-9" class="section level1">
+<h1>Operadores y Estructuras de control (Sem 8 y 9)</h1>
+<p>Nos permite controlar la manera en cómo se ejecuta nuestro código (establecen <strong>condicionales</strong>).</p>
+<p>Las estructuras de control más usadas en R son las siguiente:</p>
+<p><img src="figures/estructuraControl.PNG" width="404" /></p>
+<div id="if-else" class="section level2">
+<h2>if, else</h2>
+<p><em>if</em> se usa cuando deseamos que una operación se ejecute cuando cumple una condición deseada (Ej. <strong>Si</strong> esta condición es cierta, <strong>entonces</strong> haz una operación específica)</p>
+<p><em>else</em> se usa para indicarle a R qué hace en caso de que la condición de un <em>if</em> no se cumpla.</p>
+<p>La estructura de un la función <em>if</em> es la siguiente</p>
+<pre class="r"><code>#if (condicion) {
+#  proceso_si_se_cumple_condicion
+#}</code></pre>
+<p>Si la condición es verdadera, entonces se realiza la operación. En caso contrario, no se realiza la operación. Veamos algunos ejemplos:</p>
+<pre class="r"><code>#Se cumple la condición y se muestra &quot;verdadero&quot;.
+if (19 &gt; 15) {
+  &quot;verdadero&quot;
+}</code></pre>
+<pre><code>## [1] &quot;verdadero&quot;</code></pre>
+<pre class="r"><code>#Si no se cumple la condición, el código no se ejecuta.
+if (10 &gt; 15) {
+  &quot;verdadero&quot;
+}</code></pre>
+<p>la función <em>else</em> complementa a <em>if</em>, es decir, le asigna un proceso siempre en cuando la condición inicial no se cumpla. En otras palabras, un <em>if</em> con <em>else</em> es la manera de decirle a R:</p>
+<ul>
+<li><strong>SI</strong> esta condición es cierta, <strong>ENTONCES</strong> haz estas operaciones.<strong>DE OTRO MODO</strong> haz estas otras operaciones.</li>
+</ul>
+<p>La estructura de in <strong>if</strong> con <strong>else</strong> es el siguiente:</p>
+<pre class="r"><code>#if (condition) {
+#  proceso1
+#} else {
+#  proceso2
+#}</code></pre>
+<p>Del ejemplo anterior podemos hacer las siguientes modificaciones:</p>
+<pre class="r"><code>#Se cumple condición
+if (18 &gt; 15) {
+  &quot;Verdadero&quot;
+} else {
+  &quot;Falso&quot;
+}</code></pre>
+<pre><code>## [1] &quot;Verdadero&quot;</code></pre>
+<pre class="r"><code>#No se cumple condición
+if (10 &gt; 15) {
+  &quot;Verdadero&quot;
+} else {
+  &quot;Falso&quot;
+}</code></pre>
+<pre><code>## [1] &quot;Falso&quot;</code></pre>
+<p>Para ilustrar el uso de <em>if</em> y <em>else</em> definiremos una función que calcule el promedio de calificaciones de un estudiante y, dependiendo de la calificación calculada, nos devuelva un mensaje específico.</p>
+<pre class="r"><code>promedio &lt;- 
+  function(nota){
+    mean(nota)
+  }
+
+promedio(c(5,8,9,6,5))</code></pre>
+<pre><code>## [1] 6.6</code></pre>
+<p>Ahora realizaremos un proceso de tal forma que la función nos muestre si un estudiante ha aprobado o no. Si asumimos que un estudiante necesita obtener 5 o más en promedio para aprobar podemos decir:</p>
+<ul>
+<li><strong>SI</strong> el promedio de un estudiante es igual o mayor a 5, <strong>ENTONCES</strong> mostrar “Aprobado”, <strong>DE OTRO MODO</strong>, mostrar “Reprobado”.</li>
+</ul>
+<pre class="r"><code>promedio &lt;- 
+  function(notas) {
+    media &lt;- mean(notas)
+    
+    if (media &gt;= 5) {
+      print(&quot;Aprobado&quot;)
+    } else{
+      print(&quot;Desaprobado&quot;)
+    }
+  }</code></pre>
+<pre class="r"><code>promedio(c(6,4,5,7,5,6))</code></pre>
+<pre><code>## [1] &quot;Aprobado&quot;</code></pre>
+<pre class="r"><code>promedio(c(3,4,4,4,5,3))</code></pre>
+<pre><code>## [1] &quot;Desaprobado&quot;</code></pre>
+</div>
+<div id="if-else-1" class="section level2">
+<h2>If else</h2>
+<p>La función <em>ifelse()</em> permite vectorizar if, else. En lugar de escribir una línea de código para cada comparación, podemos usar una sola llamada a esta función, que se aplicará a todos los elementos de un vector.</p>
+<p>Si intentamos usar if else con un vector, se nos mostrará una advertencia:</p>
+<pre class="r"><code>if (1:10 &lt; 3) {
+  &quot;Verdadero&quot;
+}</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element
+## will be used</code></pre>
+<pre><code>## [1] &quot;Verdadero&quot;</code></pre>
+<p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
+<p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
+<ul>
+<li><p>un condicional</p></li>
+<li><p>un valor que indique qué mostrar si la condición se cumple</p></li>
+<li><p>un valor que indique qué mostrar si la condición no se cumple</p></li>
+</ul>
+<pre class="r"><code>vector &lt;- 1:10
+ifelse(vector &gt; 5, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
+<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
+<pre class="r"><code>edad &lt;- c(10,15,17,19, 20, 13, 11, 16, 15)
+
+ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
+<pre><code>## [1] &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
+<pre class="r"><code>#Determinar cual de los números del 1 al 60 son pares y cuales impares ¿que se debe cumplir?
+
+numeros &lt;- 1:60
+ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [11] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [21] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [31] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [51] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
+<pre class="r"><code>numeros &lt;- 1:20
+
+ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
+       &quot;Divisible&quot;,
+       &quot;No divisible&quot;)</code></pre>
+<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+##  [6] &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+## [11] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+## [16] &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
+<p>Conocer esta función puede ser particularmente útil para recodificar datos. Por ejemplo:</p>
+<pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
+sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
+sexo</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot; 
+## [10] &quot;hembra&quot;</code></pre>
+</div>
+<div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level2">
+<h2>Uso de condicionales y estructuras de control en un dataframe</h2>
+<p>Recordemos que para hacer uso de las condicionales podemos hacer uso de las funciones <em>if</em>, <em>else</em>, <em>if else</em> y/o uso de indexaciones combinado con operadores lógicos y/o relacionales. (<a href="https://github.com/AngeloCris/computacionCientifica_2021/blob/master/semana7_8/Semana7-y-8.md" class="uri">https://github.com/AngeloCris/computacionCientifica_2021/blob/master/semana7_8/Semana7-y-8.md</a>).</p>
+<pre class="r"><code>datosCrangrejo &lt;- 
+  read.table(&quot;datos/datos_cangrejos.txt&quot;,
+             sep = &quot;,&quot;,
+             header = TRUE)
+datosCrangrejo</code></pre>
+<p>Para determinar el total de filas de mi data frame usamos la función <em>length</em>.</p>
+<pre class="r"><code>attach(datosCrangrejo)</code></pre>
+<pre><code>## The following objects are masked from datosCrangrejo (pos = 3):
+## 
+##     C_Length, Month, Sector, Sex, Year</code></pre>
+<pre class="r"><code>length(datosCrangrejo$Year)</code></pre>
+<pre><code>## [1] 71013</code></pre>
+<p>La base de datos muestra los registros mensuales de la longitud y sexo de un cangrejo para el periodo 2008 y 2014. En función a lo mencionado anteriormente, resolvamos lo siguiente.</p>
+<ul>
+<li><p>Crear una columna denominada “sexo” que reemplace las categorías de la columna “sex”. Considere lo siguiente</p>
+<ul>
+<li><p>“F” = “female”</p></li>
+<li><p>“0” = “ovígera”</p></li>
+</ul></li>
+</ul>
+<pre class="r"><code>#Uso del ifelse
+#Para condicionales vectorizados
+unique(datosCrangrejo$Sex)
+datosCrangrejo$sexo &lt;- 
+  ifelse(datosCrangrejo$Sex == &quot;F&quot;, &quot;Females&quot;, &quot;Ovigera&quot;)
+head(datosCrangrejo)
+table(datosCrangrejo$sexo)</code></pre>
+<ul>
+<li><p>Crear una columna denominada “estacion” que reemplace las categorías de la columna “Month”. Considere lo siguiente:</p>
+<ul>
+<li><p>verano = 12, 1, 2</p></li>
+<li><p>otoño = 3, 4, 5</p></li>
+<li><p>invierno = 6, 7, 8</p></li>
+<li><p>primavera = 9, 10, 11</p></li>
+</ul></li>
+</ul>
+<pre class="r"><code>datosCrangrejo$estacion &lt;- &quot;NA&quot;
+datosCrangrejo$estacion[datosCrangrejo$Month %in% c(12,1,2)] &lt;- &quot;verano&quot; 
+datosCrangrejo$estacion[datosCrangrejo$Month %in% c(3,4,5)] &lt;- &quot;otoño&quot;
+datosCrangrejo$estacion[datosCrangrejo$Month %in% c(6,7,8)] &lt;- &quot;invierno&quot;
+datosCrangrejo$estacion[datosCrangrejo$Month %in% c(9,10,11)] &lt;- &quot;primavera&quot;
+head(datosCrangrejo)</code></pre>
+<pre><code>##   Year   Sector Month Sex C_Length    sexo  estacion
+## 1 2013 Sector_1    11   F   123.64 Females primavera
+## 2 2013 Sector_1    11   F   118.47 Females primavera
+## 3 2013 Sector_1    11   F   115.53 Females primavera
+## 4 2013 Sector_1    11   F   113.98 Females primavera
+## 5 2013 Sector_1    11   F   108.75 Females primavera
+## 6 2013 Sector_1    11   F   106.12 Females primavera</code></pre>
+<ul>
+<li>Determinar las posiciones de la categoría “primavera” y luego determinar los valores que se asocian a esas posiciones.</li>
+</ul>
+<pre class="r"><code>#Deseamos extraer las posiciones de las categorías que pertenecen a la estación primavera.
+which(datosCrangrejo$estacion == &quot;primavera&quot;)
+
+#Extrayendo los valores de las variables de esta categoría
+datosCrangrejo[which(datosCrangrejo$estacion == &quot;primavera&quot;),]</code></pre>
+<ul>
+<li>Extraer todos los registros de cangrejos que superan la talla media.</li>
+</ul>
+<pre class="r"><code>media &lt;- mean(datosCrangrejo$C_Length, na.rm = T)
+
+head(which(datosCrangrejo$C_Length &gt; media))</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6</code></pre>
+<pre class="r"><code>head(datosCrangrejo[which(datosCrangrejo$C_Length &gt; media),])</code></pre>
+<pre><code>##   Year   Sector Month Sex C_Length    sexo  estacion
+## 1 2013 Sector_1    11   F   123.64 Females primavera
+## 2 2013 Sector_1    11   F   118.47 Females primavera
+## 3 2013 Sector_1    11   F   115.53 Females primavera
+## 4 2013 Sector_1    11   F   113.98 Females primavera
+## 5 2013 Sector_1    11   F   108.75 Females primavera
+## 6 2013 Sector_1    11   F   106.12 Females primavera</code></pre>
+<pre class="r"><code>head(datosCrangrejo[datosCrangrejo$C_Length &gt; media,])</code></pre>
+<pre><code>##   Year   Sector Month Sex C_Length    sexo  estacion
+## 1 2013 Sector_1    11   F   123.64 Females primavera
+## 2 2013 Sector_1    11   F   118.47 Females primavera
+## 3 2013 Sector_1    11   F   115.53 Females primavera
+## 4 2013 Sector_1    11   F   113.98 Females primavera
+## 5 2013 Sector_1    11   F   108.75 Females primavera
+## 6 2013 Sector_1    11   F   106.12 Females primavera</code></pre>
+<ul>
+<li>Extraer todos los registros de cangrejos hembras que superan la talla media.</li>
+</ul>
+<pre class="r"><code>datosCrangrejo$C_Length &gt; media
+which(datosCrangrejo$C_Length &gt; media &amp; datosCrangrejo$sexo == &quot;Females&quot;)
+
+head(datosCrangrejo[which(datosCrangrejo$C_Length &gt; media &amp; datosCrangrejo$sexo == &quot;Females&quot;),])</code></pre>
+<ul>
+<li>Asumamos que la mínima talla de extracción de la especie de cangrejo sea 110 mm. Crear una columna que identifique si la longitud registrada supera o no la talla mínima.</li>
+</ul>
+<pre class="r"><code>tmin &lt;- 110
+datosCrangrejo$lengthMin &lt;- &quot;NA&quot;
+datosCrangrejo$lengthMin &lt;- ifelse(datosCrangrejo$C_Length &gt; 110, &quot;&gt;tmin&quot;, &quot;&lt;tmin&quot;)
+head(datosCrangrejo)</code></pre>
+<pre><code>##   Year   Sector Month Sex C_Length    sexo  estacion lengthMin
+## 1 2013 Sector_1    11   F   123.64 Females primavera     &gt;tmin
+## 2 2013 Sector_1    11   F   118.47 Females primavera     &gt;tmin
+## 3 2013 Sector_1    11   F   115.53 Females primavera     &gt;tmin
+## 4 2013 Sector_1    11   F   113.98 Females primavera     &gt;tmin
+## 5 2013 Sector_1    11   F   108.75 Females primavera     &lt;tmin
+## 6 2013 Sector_1    11   F   106.12 Females primavera     &lt;tmin</code></pre>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
