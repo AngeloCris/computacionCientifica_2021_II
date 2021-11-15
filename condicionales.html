@@ -475,8 +475,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 <pre class="r"><code>if (1:10 &lt; 3) {
   &quot;Verdadero&quot;
 }</code></pre>
-<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element will
-## be used</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first
+## element will be used</code></pre>
 <pre><code>## [1] &quot;Verdadero&quot;</code></pre>
 <p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
 <p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
@@ -487,7 +487,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 </ul>
 <pre class="r"><code>vector &lt;- 1:10
 ifelse(vector &gt; 5, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
-<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
+<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot; 
+##  [9] &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
 <pre class="r"><code>edad &lt;- c(10,15,17,19, 20, 13, 11, 16, 15)
 
 ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
@@ -496,28 +497,31 @@ ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
 
 numeros &lt;- 1:60
 ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
-<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [11] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [21] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [31] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [51] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+##  [9] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [17] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [25] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [33] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [49] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [57] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
 <p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
 <pre class="r"><code>numeros &lt;- 1:20
 
 ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
        &quot;Divisible&quot;,
        &quot;No divisible&quot;)</code></pre>
-<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-##  [6] &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-## [11] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-## [16] &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
+<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+##  [5] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;
+##  [9] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+## [13] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
+## [17] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
 <p>Conocer esta función puede ser particularmente útil para recodificar datos. Por ejemplo:</p>
 <pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
 sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
 sexo</code></pre>
-<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot; 
-## [10] &quot;hembra&quot;</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot;
+##  [8] &quot;macho&quot;  &quot;macho&quot;  &quot;hembra&quot;</code></pre>
 </div>
 <div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level3">
 <h3>Uso de condicionales y estructuras de control en un dataframe</h3>
@@ -528,26 +532,8 @@ sexo</code></pre>
              header = TRUE)
 datosCrangrejo</code></pre>
 <p>Para determinar el total de filas de mi data frame usamos la función <em>length</em>.</p>
-<pre class="r"><code>attach(datosCrangrejo)</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 3):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 4):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 5):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 6):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 17):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre><code>## The following objects are masked from datosCrangrejo (pos = 18):
-## 
-##     C_Length, Month, Sector, Sex, Year</code></pre>
-<pre class="r"><code>length(datosCrangrejo$Year)</code></pre>
+<pre class="r"><code>attach(datosCrangrejo)
+length(datosCrangrejo$Year)</code></pre>
 <pre><code>## [1] 71013</code></pre>
 <p>La base de datos muestra los registros mensuales de la longitud y sexo de un cangrejo para el periodo 2008 y 2014. En función a lo mencionado anteriormente, resolvamos lo siguiente.</p>
 <ul>
@@ -638,6 +624,203 @@ head(datosCrangrejo)</code></pre>
 ## 4 2013 Sector_1    11   F   113.98 Females primavera     &gt;tmin
 ## 5 2013 Sector_1    11   F   108.75 Females primavera     &lt;tmin
 ## 6 2013 Sector_1    11   F   106.12 Females primavera     &lt;tmin</code></pre>
+</div>
+</div>
+<div id="bucles" class="section level2">
+<h2>Bucles</h2>
+<div id="for" class="section level3">
+<h3>For</h3>
+<p>La estructura <em>for</em> permite ejecutar bucles realizando una operación para cada elemento de un conjunto de datos, es decir, hace un proceso de iteración.</p>
+<pre class="r"><code>#la estructura es
+#for (variable in vector) {
+#  proceso
+#}</code></pre>
+<p>Esta estructura le dice a R:</p>
+<ul>
+<li><strong>PARA</strong> cada elemento <strong>EN</strong> un objeto, realice un proceso específico.</li>
+</ul>
+<p>Cuando observamos la estructura del bucle, la “variable” puede ser un elemento cualquiera (la podemos llamar como nosotros queramos) pero el objeto “vector” tiene que ser un objeto existente.</p>
+<p>Algunos ejemplo:</p>
+<ul>
+<li>Sumarle 2 unidades a cada elemento del objeto “vector” definido líneas abajo:</li>
+</ul>
+<pre class="r"><code>vector &lt;- 5:10
+
+vector[1] + 2</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>vector[2] + 2 </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>vector[3] + 2</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>vector[4] + 2</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>vector[5] + 2</code></pre>
+<pre><code>## [1] 11</code></pre>
+<pre class="r"><code>for (i in length(vector)) {
+  vector1 &lt;- vector[i] + 2
+
+}
+
+vector1</code></pre>
+<pre><code>## [1] 12</code></pre>
+<ul>
+<li>Si deseamos imprimir vectores con la siguiente forma: “El año es x”, donde x es igual a 1990, 1991, 1992, … , 2020 y 2021. Esto se podría realizar de la siguiente manera:</li>
+</ul>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 1990))</code></pre>
+<pre><code>## [1] &quot;El año es 1990&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 1991))</code></pre>
+<pre><code>## [1] &quot;El año es 1991&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 1992))</code></pre>
+<pre><code>## [1] &quot;El año es 1992&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 1993)) #asi sucesivamente</code></pre>
+<pre><code>## [1] &quot;El año es 1993&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 2019))</code></pre>
+<pre><code>## [1] &quot;El año es 2019&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 2020))</code></pre>
+<pre><code>## [1] &quot;El año es 2020&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;El año es&quot;, 2021))</code></pre>
+<pre><code>## [1] &quot;El año es 2021&quot;</code></pre>
+<p>Cuando la longitud del vector x es grande, este proceso se vuelve tedioso. En este caso se recomienda usar un loop en R para que el proceso se repita continuamente.</p>
+<pre class="r"><code>for (year in 1990:2021) {
+  print(paste(&quot;El año es&quot;, year))
+}</code></pre>
+<ul>
+<li>Calcular el cuadrado de los 10 primeros elementos de un vector u1</li>
+</ul>
+<pre class="r"><code>#Vector u1
+u1 &lt;- rnorm(30)
+print(&quot;Este loop calculará el cuadrado de los 10 primeros elementos del vector u1&quot;)</code></pre>
+<pre><code>## [1] &quot;Este loop calculará el cuadrado de los 10 primeros elementos del vector u1&quot;</code></pre>
+<pre class="r"><code>usq &lt;- 0
+
+for (i in 1:10) {
+  usq[i] &lt;- u1[i] * u1[i]
+  print(usq[i])
+}</code></pre>
+<pre><code>## [1] 2.692639
+## [1] 1.335906
+## [1] 0.0001710643
+## [1] 0.9123501
+## [1] 2.214333
+## [1] 0.3049553
+## [1] 0.4094151
+## [1] 2.294661
+## [1] 0.8736016
+## [1] 0.1513552</code></pre>
+</div>
+<div id="while" class="section level3">
+<h3>while</h3>
+<p>Tipo de bucle que realizará un proceso <strong>mientras</strong> la condición propuesta sea <strong>verdadera</strong>.</p>
+<pre class="r"><code>#while (condicion) {
+#  operaciones
+#}</code></pre>
+<p>Algunos ejemplos:</p>
+<ul>
+<li>Imprimir el siguiente mensaje “Cuando el valor de inicio sea mayor o igual a 5, detener operación” donde la variable “límite” es igual a 5 y la variable “inicio”, 0.</li>
+</ul>
+<pre class="r"><code>limite &lt;- 5
+inicio &lt;- 0
+
+while (inicio &lt; limite) {
+  print(&quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;)
+  inicio &lt;- inicio + 1
+}</code></pre>
+<pre><code>## [1] &quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;
+## [1] &quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;
+## [1] &quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;
+## [1] &quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;
+## [1] &quot;Cuando el valor de inicio sea mayor o igual a 5, detener operación&quot;</code></pre>
+<p>Tener cuidado con crear bucles infinitos! Si se ejecuta el While con una condición que nunca termine, este no se detendrá.</p>
+<pre class="r"><code>#while (inicio &lt; limite) {
+#  print(&quot;Cuando el valor de inicio sea mayor a 5, detener la operación&quot;)
+#}</code></pre>
+<ul>
+<li>Realizar un proceso iteración (10 veces) donde se muestre el mensaje “Este es el loop número x”. Sea x el número de la iteración.</li>
+</ul>
+<pre class="r"><code>#Crear una variable con valor 1
+inicio &lt;- 1
+
+#Create un loop
+while (inicio &lt;= 10) {
+  cat(&quot;Este es el loop número&quot;, inicio)
+  inicio &lt;- inicio + 1
+  print(inicio)
+}</code></pre>
+<pre><code>## Este es el loop número 1[1] 2
+## Este es el loop número 2[1] 3
+## Este es el loop número 3[1] 4
+## Este es el loop número 4[1] 5
+## Este es el loop número 5[1] 6
+## Este es el loop número 6[1] 7
+## Este es el loop número 7[1] 8
+## Este es el loop número 8[1] 9
+## Este es el loop número 9[1] 10
+## Este es el loop número 10[1] 11</code></pre>
+<ul>
+<li>Deseamos conocer el primer número entero positivo cuyo cuadrado exceda a 4000:</li>
+</ul>
+<pre class="r"><code>#Variable de inicialización
+n &lt;- 0
+potencia &lt;- 0
+
+#While loop
+while (potencia &lt;= 4000) {
+  n &lt;- n + 1 #definiendo número entero positivo
+  potencia &lt;- n ^ 2 #definiendo el cuadrado de ese número
+}</code></pre>
+<ul>
+<li>Suma de dos vectores</li>
+</ul>
+<pre class="r"><code>x &lt;- c(1, 2, 3, 4)
+y &lt;- c(0, 0, 5, 1)
+n &lt;- length(x)
+i &lt;- 0
+z &lt;- numeric(n)
+
+while (i &lt;= n) {
+  z[i] &lt;- x[i] + y[i]
+  i &lt;- i + 1
+}
+
+z</code></pre>
+<pre><code>## [1] 1 2 8 5</code></pre>
+<ul>
+<li>Extraer un número al azar de una secuencia numérica del 1 al 10 hasta que la suma de sus elementos extraídos sea menor a 50. Indicar el número de iteraciones y la suma resultante.</li>
+</ul>
+<pre class="r"><code>contador &lt;- 0
+suma &lt;- 0
+
+while (suma &lt; 50) {
+  suma &lt;- suma + sample(x = 1:10, size = 1)
+  contador &lt;- contador + 1
+}</code></pre>
+<p>En clase se vió un ejemplo en donde los elementos de un vector x correspondían a conteos de animales avistados a lo largo de un transecto. Solicitaban encontrar en punto a lo largo del transecto en que el número acumulado de animales avistados es al menos 50</p>
+<pre class="r"><code>x &lt;- c(1,0,1,2,1,4,7,2,6,1,8,2,0,3,0,10,8,5,4,5,8,2,0,5,8)
+sum &lt;- 0
+i &lt;- 0
+
+while (sum &lt; 50) {
+  i = i + 1
+  sum = sum + x[i]
+  print(sum)
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 1
+## [1] 2
+## [1] 4
+## [1] 5
+## [1] 9
+## [1] 16
+## [1] 18
+## [1] 24
+## [1] 25
+## [1] 33
+## [1] 35
+## [1] 35
+## [1] 38
+## [1] 38
+## [1] 48
+## [1] 56</code></pre>
 </div>
 </div>
 
