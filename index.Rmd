@@ -38,7 +38,8 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
     - Condicionales \
     [Semana 7](./condicionales.html)
     
-    - Ciclos o bucles
+    - Ciclos o bucles \
+    [Semana 8](./condicionales.html)
     
 4. Octubre 25: **Funciones**. Implementar funciones personalizadas para desarrollar tareas específicas. Emplear funciones gráficas para la visualización de datos. Este tópico se sub-dividirá en 3 semanas donde se abordarán los siguientes puntos:
 
