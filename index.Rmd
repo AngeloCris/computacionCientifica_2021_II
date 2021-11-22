@@ -45,7 +45,8 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
 
     - Funciones en R. 
     
-    - Funciones gráficas I y II
+    - Funciones gráficas I y II \
+    [Semana 9](./graficos.html)
 
 5. Noviembre: **Aplicaciones**. Desarrollar una función con aplicación biológicas. Trabajo final.
 
