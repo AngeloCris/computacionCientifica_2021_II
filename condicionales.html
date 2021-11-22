@@ -348,6 +348,13 @@ div.tocify {
     Programación
   </a>
 </li>
+<li>
+  <a href="graficos.html">
+    <span class="fas fa-chart-line"></span>
+     
+    Graficos
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -475,8 +482,8 @@ promedio(c(5,8,9,6,5))</code></pre>
 <pre class="r"><code>if (1:10 &lt; 3) {
   &quot;Verdadero&quot;
 }</code></pre>
-<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first
-## element will be used</code></pre>
+<pre><code>## Warning in if (1:10 &lt; 3) {: the condition has length &gt; 1 and only the first element will be
+## used</code></pre>
 <pre><code>## [1] &quot;Verdadero&quot;</code></pre>
 <p>El mensaje muestra que la condición sólo es evaluada para el primer elemento del vector 1:10, es decir para 1. Los demás elementos son ignorados.</p>
 <p>Por el contrario, con <em>ifelse</em> le indicamos que la condición debe de cumplirse para cada uno de los elementos del vector. Esta función tiene tres argumentos:</p>
@@ -487,8 +494,7 @@ promedio(c(5,8,9,6,5))</code></pre>
 </ul>
 <pre class="r"><code>vector &lt;- 1:10
 ifelse(vector &gt; 5, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
-<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot; 
-##  [9] &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
+<pre><code>##  [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;  &quot;TRUE&quot;</code></pre>
 <pre class="r"><code>edad &lt;- c(10,15,17,19, 20, 13, 11, 16, 15)
 
 ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
@@ -497,31 +503,27 @@ ifelse(edad &gt;= 15, &quot;TRUE&quot;, &quot;FALSE&quot;)</code></pre>
 
 numeros &lt;- 1:60
 ifelse(numeros %% 2 == 0, &quot;par&quot;, &quot;impar&quot;)</code></pre>
-<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-##  [9] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [17] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [25] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [33] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [41] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [49] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
-## [57] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
+<pre><code>##  [1] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [12] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [23] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [34] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;  
+## [45] &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot;
+## [56] &quot;par&quot;   &quot;impar&quot; &quot;par&quot;   &quot;impar&quot; &quot;par&quot;</code></pre>
 <p>Otro ejemplo más complejo. Solicitamos sólo los números que son exactamente divisibles entre 2 y 3.</p>
 <pre class="r"><code>numeros &lt;- 1:20
 
 ifelse(numeros %% 2 == 0 &amp; numeros %% 3 == 0,
        &quot;Divisible&quot;,
        &quot;No divisible&quot;)</code></pre>
-<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-##  [5] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;
-##  [9] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
-## [13] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot;
-## [17] &quot;No divisible&quot; &quot;Divisible&quot;    &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
+<pre><code>##  [1] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+##  [7] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+## [13] &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;No divisible&quot; &quot;Divisible&quot;   
+## [19] &quot;No divisible&quot; &quot;No divisible&quot;</code></pre>
 <p>Conocer esta función puede ser particularmente útil para recodificar datos. Por ejemplo:</p>
 <pre class="r"><code>sexo &lt;- c(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)
 sexo &lt;- ifelse(sexo == 0, &quot;hembra&quot;, &quot;macho&quot;)
 sexo</code></pre>
-<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot;
-##  [8] &quot;macho&quot;  &quot;macho&quot;  &quot;hembra&quot;</code></pre>
+<pre><code>##  [1] &quot;hembra&quot; &quot;macho&quot;  &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;hembra&quot; &quot;macho&quot;  &quot;macho&quot;  &quot;hembra&quot;</code></pre>
 </div>
 <div id="uso-de-condicionales-y-estructuras-de-control-en-un-dataframe" class="section level3">
 <h3>Uso de condicionales y estructuras de control en un dataframe</h3>
@@ -697,16 +699,16 @@ for (i in 1:10) {
   usq[i] &lt;- u1[i] * u1[i]
   print(usq[i])
 }</code></pre>
-<pre><code>## [1] 2.692639
-## [1] 1.335906
-## [1] 0.0001710643
-## [1] 0.9123501
-## [1] 2.214333
-## [1] 0.3049553
-## [1] 0.4094151
-## [1] 2.294661
-## [1] 0.8736016
-## [1] 0.1513552</code></pre>
+<pre><code>## [1] 0.7238214
+## [1] 1.139243
+## [1] 0.3262812
+## [1] 0.5664337
+## [1] 0.005021815
+## [1] 1.810217
+## [1] 1.192867
+## [1] 0.4257675
+## [1] 0.08065857
+## [1] 0.003153246</code></pre>
 </div>
 <div id="while" class="section level3">
 <h3>while</h3>
