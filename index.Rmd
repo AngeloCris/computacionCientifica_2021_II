@@ -7,6 +7,8 @@ title: "BIENVENIDOS"
 
 Este sitio web es el punto de partida para una secuencia de clases de reforzamiento del curso **"Computación y programación Básica - 2do Semestre 2021"** realizado por la Universidad de Concepción.
 
+Este es un curso que forma parte del programa de capacitaciones y entrenamiento de **The Nature Conservancy Perú** en Análisis de datos con R. 
+
 # Clases Online
 
 Favor de unirse a Microsoft Teams todos los lunes de 15:15 a 17:00.

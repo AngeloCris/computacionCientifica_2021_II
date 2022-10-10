@@ -13,7 +13,7 @@
 
 <title>BIENVENIDOS</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -59,6 +59,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="libs/swcarpentry-lesson.css" type="text/css" />
 
 
@@ -83,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -140,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -235,7 +243,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -307,21 +315,37 @@ $(document).ready(function () {
 
 <div id="visión-general" class="section level1">
 <h1>Visión general</h1>
-<p>Este sitio web es el punto de partida para una secuencia de clases de reforzamiento del curso <strong>“Computación y programación Básica - 2do Semestre 2021”</strong> realizado por la Universidad de Concepción.</p>
+<p>Este sitio web es el punto de partida para una secuencia de clases de
+reforzamiento del curso <strong>“Computación y programación Básica - 2do
+Semestre 2021”</strong> realizado por la Universidad de Concepción.</p>
+<p>Este es un curso que forma parte del programa de capacitaciones y
+entrenamiento de <strong>The Nature Conservancy Perú</strong> en
+Análisis de datos con R.</p>
 </div>
 <div id="clases-online" class="section level1">
 <h1>Clases Online</h1>
-<p>Favor de unirse a Microsoft Teams todos los lunes de 15:15 a 17:00.</p>
-<p>La primera media hora se procederá a realizar consultas/repaso del material previamente asignado en clases por los profesores principales del curso: Dr. Billy Ernst y el Dr. Diego Narváez. Posteriormente se le asignará un test de 30 minutos de duración el cual deberá ser resuelto en canvas. El solucionario del test y/o consultas, comentarios del mismo se realizará en la última media hora.</p>
+<p>Favor de unirse a Microsoft Teams todos los lunes de 15:15 a
+17:00.</p>
+<p>La primera media hora se procederá a realizar consultas/repaso del
+material previamente asignado en clases por los profesores principales
+del curso: Dr. Billy Ernst y el Dr. Diego Narváez. Posteriormente se le
+asignará un test de 30 minutos de duración el cual deberá ser resuelto
+en canvas. El solucionario del test y/o consultas, comentarios del mismo
+se realizará en la última media hora.</p>
 </div>
 <div id="temario" class="section level1">
 <h1>Temario</h1>
 <ol style="list-style-type: decimal">
 <li><p>Septiembre 6: <strong>R-project</strong><br />
-Familiarizarse con los conceptos generales del software R-project y el entorno de desarrollo R-Studio.<br />
+Familiarizarse con los conceptos generales del software R-project y el
+entorno de desarrollo R-Studio.<br />
 <a href="./rstudio.html">Semana 1 y 2</a></p></li>
 <li><p>Septiembre 13: <strong>Datos</strong><br />
-Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, importación de archivos. Operaciones matriciales y por elementos. Uso y operaciones con dataframes. La temática del tópico <strong>Datos</strong> se dividirá en tres semanas, en las cuales se abordarán los siguientes puntos:</p>
+Familiarizarse con los tipos de datos en R, matrices, vectores,
+dataframes, importación de archivos. Operaciones matriciales y por
+elementos. Uso y operaciones con dataframes. La temática del tópico
+<strong>Datos</strong> se dividirá en tres semanas, en las cuales se
+abordarán los siguientes puntos:</p>
 <ul>
 <li><p>Variables en R, input/output<br />
 <a href="./datos.html">Semana 3</a></p></li>
@@ -330,7 +354,11 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
 <li><p>Uso y operaciones con dataframe<br />
 <a href="./datos.html">Semana 5</a></p></li>
 </ul></li>
-<li><p>Octubre 4: <strong>Programación</strong>. Conocer los principales comandos en la programación en R. Desarrollar diagramas de flujos. Crear algoritmos y desarrollar opciones avanzadas de manipulación de dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán los siguientes puntos:</p>
+<li><p>Octubre 4: <strong>Programación</strong>. Conocer los principales
+comandos en la programación en R. Desarrollar diagramas de flujos. Crear
+algoritmos y desarrollar opciones avanzadas de manipulación de
+dataframes. Este tópico se sub-dividirá en 3 semana donde se abordarán
+los siguientes puntos:</p>
 <ul>
 <li><p>Operadores aritméticos y lógicos. Diagramas de flujo</p></li>
 <li><p>Condicionales<br />
@@ -338,13 +366,17 @@ Familiarizarse con los tipos de datos en R, matrices, vectores, dataframes, impo
 <li><p>Ciclos o bucles<br />
 <a href="./condicionales.html">Semana 8</a></p></li>
 </ul></li>
-<li><p>Octubre 25: <strong>Funciones</strong>. Implementar funciones personalizadas para desarrollar tareas específicas. Emplear funciones gráficas para la visualización de datos. Este tópico se sub-dividirá en 3 semanas donde se abordarán los siguientes puntos:</p>
+<li><p>Octubre 25: <strong>Funciones</strong>. Implementar funciones
+personalizadas para desarrollar tareas específicas. Emplear funciones
+gráficas para la visualización de datos. Este tópico se sub-dividirá en
+3 semanas donde se abordarán los siguientes puntos:</p>
 <ul>
 <li><p>Funciones en R.</p></li>
 <li><p>Funciones gráficas I y II<br />
 <a href="./graficos.html">Semana 9</a></p></li>
 </ul></li>
-<li><p>Noviembre: <strong>Aplicaciones</strong>. Desarrollar una función con aplicación biológicas. Trabajo final.</p></li>
+<li><p>Noviembre: <strong>Aplicaciones</strong>. Desarrollar una función
+con aplicación biológicas. Trabajo final.</p></li>
 </ol>
 </div>
 
